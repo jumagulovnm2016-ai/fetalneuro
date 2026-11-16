@@ -147,5 +147,29 @@ FN.REFS = {
     authors: "Mappa I, Di Mascio D, Carbone L, et al.",
     journal: "Biomedicines", year: 2024, volume: "12", issue: "7", pages: "1397",
     doi: "10.3390/biomedicines12071397", pmid: "39061971", url: "https://doi.org/10.3390/biomedicines12071397"
+  },
+  "lermansagie-2021-mcd": {
+    title: "A practical approach to prenatal diagnosis of malformations of cortical development",
+    authors: "Lerman-Sagie T, Pogledic I, Leibovitz Z, Malinger G",
+    journal: "Eur J Paediatr Neurol", year: 2021, volume: "34", pages: "50–61",
+    doi: "10.1016/j.ejpn.2021.08.001", pmid: "34390998", url: "https://doi.org/10.1016/j.ejpn.2021.08.001"
+  },
+  "fong-2004-mds": {
+    title: "Prenatal ultrasound findings of lissencephaly associated with Miller-Dieker syndrome and comparison with pre- and postnatal magnetic resonance imaging",
+    authors: "Fong KW, Ghai S, Toi A, Blaser S, Winsor EJT, Chitayat D",
+    journal: "Ultrasound Obstet Gynecol", year: 2004, volume: "24", issue: "7", pages: "716–723",
+    doi: "10.1002/uog.1777", pmid: "15586369", url: "https://doi.org/10.1002/uog.1777"
+  },
+  "peero-2023-sf": {
+    title: "Diagnosis of fetal cortical abnormalities by new reference charts for assessment of sylvian fissure biometry",
+    authors: "Peero EK, Kugelman N, Gindes L, et al.",
+    journal: "Prenat Diagn", year: 2023, volume: "43", issue: "8", pages: "1066–1078",
+    doi: "10.1002/pd.6359", pmid: "37115172", url: "https://doi.org/10.1002/pd.6359"
+  },
+  "hadi-2026-lvbi": {
+    title: "Morphological patterns of fetal lateral ventricular border irregularities: descriptive study",
+    authors: "Hadi E, Sorotzkin A, Haddad L, et al.",
+    journal: "Ultrasound Obstet Gynecol", year: 2026, volume: "67", issue: "5", pages: "635–645",
+    doi: "10.1002/uog.70217", pmid: "41987549", url: "https://doi.org/10.1002/uog.70217"
   }
 };

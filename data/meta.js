@@ -18,6 +18,5 @@ FN.PERIODS = [
 /* План разделов, которые ещё не написаны. Показываются как «в разработке».
    type: view — срез, anomaly — порок. */
 FN.PLAN = [
-  { "period": "targeted", "type": "anomaly", "name": "Нарушения развития коры" },
   { "period": "targeted", "type": "anomaly", "name": "Микроцефалия" }
 ];
