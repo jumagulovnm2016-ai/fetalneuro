@@ -188,7 +188,7 @@ FN.REFS = {
     title: "Selection of Standards for Sonographic Fetal Head Circumference by Use of z-Scores",
     authors: "Combs CA, Rosario AD, Balogun OA, Bowman ZS, Amara S",
     journal: "Am J Perinatol", year: 2024, volume: "41", issue: "S 01", pages: "e2625–e2635",
-    doi: "10.1055/a-2135-6838", pmid: "37487545", url: "https://doi.org/10.1055/a-2135-6838"
+    note: "Есть опубликованное исправление (erratum): Am J Perinatol 2024;41(S 01):e3425, doi 10.1055/s-0044-1792136; его содержание не проверено.", doi: "10.1055/a-2135-6838", pmid: "37487545", url: "https://doi.org/10.1055/a-2135-6838"
   },
   "li-2019-fpl": {
     title: "Effect of head circumference in combination with facial profile line on ultrasonic diagnosis of microcephaly",
@@ -246,3 +246,16 @@ FN.REFS = {
     doi: "10.1002/uog.26054", pmid: "36056700", url: "https://doi.org/10.1002/uog.26054"
   }
 };
+
+/* Тип источника — для группировки в списках литературы. */
+(function () {
+  const T = {
+    guideline: ["isuog-2023-11-14", "isuog-2020-cns-1", "isuog-2021-cns-2", "smfm-2018-vm", "rcog-2024-cmv"],
+    systematic: ["pagani-2014-vm", "santo-2012-acc", "dantonio-2016-pf1", "parisi-2025-pf", "mappa-2024-cortex", "chibueze-2017-mc", "stefanska-2026-cmv"],
+    review: ["chaoui-2010-editorial", "lermansagie-2021-mcd", "gafner-2025-disrupt"]
+  };
+  Object.keys(FN.REFS).forEach(id => { FN.REFS[id].type = "original"; });
+  Object.entries(T).forEach(([t, ids]) => ids.forEach(id => { if (FN.REFS[id]) FN.REFS[id].type = t; }));
+})();
+FN.REF_TYPES = { guideline: "Клинические рекомендации и позиции обществ", systematic: "Систематические обзоры и метаанализы", review: "Обзоры и экспертные мнения", original: "Оригинальные исследования" };
+

@@ -65,16 +65,19 @@
     : `<span class="badge draft">● черновик · на проверке</span>`;
 
   const SEC_RU = { how: "Как получить", check: "Что оценить в норме", measure: "Измерения", errors: "Типичные ошибки",
-    abnormal: "Патологические находки", structures: "Структуры на схеме", card: "вся карточка" };
+    abnormal: "Патологические находки", structures: "Структуры на схеме", card: "вся карточка",
+    def: "Суть", keys: "Признаки", views: "По срезам", ddx: "Дифдиагноз", assoc: "Сочетания", pitfalls: "Ловушки", prognosis: "Прогноз", refer: "Тактика" };
   const refsBlock = refs => {
     if (!refs || !refs.length) return "";
     const groups = {};
     refs.forEach(r => (groups[r.source] = groups[r.source] || []).push(r));
-    const items = Object.entries(groups).map(([id, rs]) => {
+    const ORDERT = ["guideline", "systematic", "review", "original"];
+    const items = Object.entries(groups).sort((x, y) => ORDERT.indexOf((REFS[x[0]] || {}).type) - ORDERT.indexOf((REFS[y[0]] || {}).type)).map(([id, rs]) => {
       const s = REFS[id]; if (!s) return "";
+      const typ = s.type && FN.REF_TYPES ? `<span class="badge wrap">${esc(FN.REF_TYPES[s.type])}</span> ` : "";
       const badges = rs.map(r => `<span class="badge wrap ${r.verified ? "ok" : "draft"}">${r.verified ? `сверено с резюме: «${SEC_RU[r.section] || r.section}»` : "источник по теме, утверждения не сверены"}</span>`).join(" ");
       return `<li><b>${esc((s.organization || s.authors).replace(/\.$/, ""))}</b>. ${esc(s.title)}. <i>${esc(s.journal || "")}</i> ${s.year}${s.volume ? `;${esc(s.volume)}` : ""}${s.pages ? `:${esc(s.pages)}` : ""}.
-        <a href="${esc(s.url)}" target="_blank" rel="noopener">doi:${esc(s.doi)}</a>${s.pmid ? ` · PMID ${esc(s.pmid)}` : ""}<br>${badges}</li>`;
+        <a href="${esc(s.url)}" target="_blank" rel="noopener">doi:${esc(s.doi)}</a>${s.pmid ? ` · PMID ${esc(s.pmid)}` : ""}${s.note ? `<br><span class="small muted">${esc(s.note)}</span>` : ""}<br>${typ}${badges}</li>`;
     }).join("");
     return `<h2 id="s-refs">Источники</h2><ol class="refs">${items}</ol>`;
   };
