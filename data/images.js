@@ -174,7 +174,7 @@ var FN = globalThis.FN = globalThis.FN || {};
       source: UNG_CASE("рис. 3")
     },
     {
-      id: "xue2025-f2def", file: "img/xue2025-f2def.jpg", cards: ["anom:osb"], status: "draft",
+      id: "xue2025-f2def", file: "img/xue2025-f2def.jpg", cards: ["anom:osb", "anom:microcephaly"], status: "draft",
       label: "«Бабочка» при вентрикуломегалии, spina bifida и микроцефалии",
       caption: "Illustration and two-dimensional view of the standard axial butterfly plane in fetus with nervous system abnormalities. (A,D) Fetus with ventriculomegaly (VM). (B,E) Fetus with open spina bifida (OSB). (C,F) Fetus with microcephaly. ▲, the lateral ventricles; ✽, the choroid plexus.",
       captionRu: "Стандартный аксиальный срез «бабочки» в I триместре при патологии: (D) вентрикуломегалия, (E) открытая spina bifida, (F) микроцефалия. ▲ — боковые желудочки, ✽ — сосудистые сплетения.",

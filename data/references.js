@@ -171,5 +171,59 @@ FN.REFS = {
     authors: "Hadi E, Sorotzkin A, Haddad L, et al.",
     journal: "Ultrasound Obstet Gynecol", year: 2026, volume: "67", issue: "5", pages: "635–645",
     doi: "10.1002/uog.70217", pmid: "41987549", url: "https://doi.org/10.1002/uog.70217"
+  },
+  "gelber-2017-mc": {
+    title: "Prenatal screening for microcephaly: an update after three decades",
+    authors: "Gelber SE, Grünebaum A, Chervenak FA",
+    journal: "J Perinat Med", year: 2017, volume: "45", issue: "2", pages: "167–170",
+    doi: "10.1515/jpm-2016-0220", pmid: "27662643", url: "https://doi.org/10.1515/jpm-2016-0220"
+  },
+  "chibueze-2017-mc": {
+    title: "Diagnostic Accuracy of Ultrasound Scanning for Prenatal Microcephaly in the context of Zika Virus Infection: A Systematic Review and Meta-analysis",
+    authors: "Chibueze EC, Parsons AJQ, Lopes KDS, et al.",
+    journal: "Sci Rep", year: 2017, volume: "7", issue: "1", pages: "2310",
+    doi: "10.1038/s41598-017-01991-y", pmid: "28536443", url: "https://doi.org/10.1038/s41598-017-01991-y"
+  },
+  "combs-2023-hc": {
+    title: "Selection of Standards for Sonographic Fetal Head Circumference by Use of z-Scores",
+    authors: "Combs CA, Rosario AD, Balogun OA, Bowman ZS, Amara S",
+    journal: "Am J Perinatol", year: 2024, volume: "41", issue: "S 01", pages: "e2625–e2635",
+    doi: "10.1055/a-2135-6838", pmid: "37487545", url: "https://doi.org/10.1055/a-2135-6838"
+  },
+  "li-2019-fpl": {
+    title: "Effect of head circumference in combination with facial profile line on ultrasonic diagnosis of microcephaly",
+    authors: "Li Y, Pan MZ, Tao GW, Ma Z, Wu HF, Li Q",
+    journal: "J Matern Fetal Neonatal Med", year: 2020, volume: "33", issue: "14", pages: "2372–2376",
+    doi: "10.1080/14767058.2018.1551349", pmid: "30608016", url: "https://doi.org/10.1080/14767058.2018.1551349"
+  },
+  "du-2026-tfl": {
+    title: "A Novel Fetal Intracranial Measurement Contributing to the Differential Diagnosis of Fetal Microcephaly",
+    authors: "Du X, Zhu R, Li H, et al.",
+    journal: "J Ultrasound Med", year: 2026, volume: "45", issue: "7", pages: "1409–1418",
+    doi: "10.1002/jum.70177", pmid: "41518100", url: "https://doi.org/10.1002/jum.70177"
+  },
+  "liu-2023-hc": {
+    title: "Prenatal evaluation of genetic variants in fetuses with small head circumference: A single-center retrospective study",
+    authors: "Liu J, Liu Q, Zhao J, Lin S, Zhou Y",
+    journal: "Eur J Obstet Gynecol Reprod Biol", year: 2024, volume: "293", pages: "57–66",
+    doi: "10.1016/j.ejogrb.2023.12.004", pmid: "38113582", url: "https://doi.org/10.1016/j.ejogrb.2023.12.004"
+  },
+  "fu-2026-fmic": {
+    title: "Genetic architecture and prognostic significance of suspected fetal microcephaly: evidence from prenatal exome sequencing in a large prospective cohort",
+    authors: "Fu F, Wei X, Chen C, et al.",
+    journal: "Hum Genomics", year: 2026, volume: "20", issue: "1",
+    doi: "10.1186/s40246-026-00911-4", pmid: "41634881", url: "https://doi.org/10.1186/s40246-026-00911-4"
+  },
+  "gafner-2022-cask": {
+    title: "Expanding the natural history of CASK-related disorders to the prenatal period",
+    authors: "Gafner M, Boltshauser E, D'Abrusco F, et al.",
+    journal: "Dev Med Child Neurol", year: 2023, volume: "65", issue: "4", pages: "544–550",
+    doi: "10.1111/dmcn.15419", pmid: "36175354", url: "https://doi.org/10.1111/dmcn.15419"
+  },
+  "parra-2017-zika": {
+    title: "Serial Head and Brain Imaging of 17 Fetuses With Confirmed Zika Virus Infection in Colombia, South America",
+    authors: "Parra-Saavedra M, Reefhuis J, Piraquive JP, et al.",
+    journal: "Obstet Gynecol", year: 2017, volume: "130", issue: "1", pages: "207–212",
+    doi: "10.1097/AOG.0000000000002105", pmid: "28594771", url: "https://doi.org/10.1097/AOG.0000000000002105"
   }
 };
