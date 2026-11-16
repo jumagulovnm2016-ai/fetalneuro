@@ -220,10 +220,29 @@ FN.REFS = {
     journal: "Dev Med Child Neurol", year: 2023, volume: "65", issue: "4", pages: "544–550",
     doi: "10.1111/dmcn.15419", pmid: "36175354", url: "https://doi.org/10.1111/dmcn.15419"
   },
-  "parra-2017-zika": {
-    title: "Serial Head and Brain Imaging of 17 Fetuses With Confirmed Zika Virus Infection in Colombia, South America",
-    authors: "Parra-Saavedra M, Reefhuis J, Piraquive JP, et al.",
-    journal: "Obstet Gynecol", year: 2017, volume: "130", issue: "1", pages: "207–212",
-    doi: "10.1097/AOG.0000000000002105", pmid: "28594771", url: "https://doi.org/10.1097/AOG.0000000000002105"
+  "gafner-2025-disrupt": {
+    title: "Disruptive lesions can cause developmental anomalies in the fetal brain: Mini-review",
+    authors: "Gafner M, Hadi E, Haddad L, Gindes L, Dobyns WB, Lerman-Sagie T",
+    journal: "Eur J Paediatr Neurol", year: 2025, volume: "56", pages: "80–83",
+    doi: "10.1016/j.ejpn.2025.05.003", pmid: "40339399", url: "https://doi.org/10.1016/j.ejpn.2025.05.003"
+  },
+  "rcog-2024-cmv": {
+    organization: "Royal College of Obstetricians and Gynaecologists (RCOG)",
+    title: "Congenital Cytomegalovirus Infection: Update on Screening, Diagnosis and Treatment: Scientific Impact Paper No. 56",
+    authors: "Khalil A, Heath PT, Jones CE, Soe A, Ville YG",
+    journal: "BJOG", year: 2025, volume: "132", issue: "2", pages: "e42–e52",
+    doi: "10.1111/1471-0528.17966", pmid: "39434207", url: "https://doi.org/10.1111/1471-0528.17966"
+  },
+  "stefanska-2026-cmv": {
+    title: "Role of Ultrasound and Fetal MRI in the Prenatal Assessment of Congenital Cytomegalovirus Infection: A Systematic Review",
+    authors: "Stefanska K, Berbeka K, Madej D, et al.",
+    journal: "J Clin Med", year: 2026, volume: "15", issue: "10", pages: "3645",
+    doi: "10.3390/jcm15103645", pmid: "42194606", url: "https://doi.org/10.3390/jcm15103645"
+  },
+  "dimascio-2023-cmv": {
+    title: "Role of fetal magnetic resonance imaging in fetuses with congenital cytomegalovirus infection: multicenter study",
+    authors: "Di Mascio D, Rizzo G, Khalil A, D'Antonio F, et al.",
+    journal: "Ultrasound Obstet Gynecol", year: 2023, volume: "61", issue: "1", pages: "67–73",
+    doi: "10.1002/uog.26054", pmid: "36056700", url: "https://doi.org/10.1002/uog.26054"
   }
 };
