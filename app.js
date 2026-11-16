@@ -66,7 +66,7 @@
 
   const SEC_RU = { how: "Как получить", check: "Что оценить в норме", measure: "Измерения", errors: "Типичные ошибки",
     abnormal: "Патологические находки", structures: "Структуры на схеме", card: "вся карточка",
-    def: "Суть", keys: "Признаки", views: "По срезам", ddx: "Дифдиагноз", assoc: "Сочетания", pitfalls: "Ловушки", prognosis: "Прогноз", refer: "Тактика" };
+    def: "Суть", keys: "Признаки", views: "По срезам", ddx: "Дифдиагноз", assoc: "Сочетания", pitfalls: "Ловушки", prognosis: "Прогноз", refer: "Тактика", confirm: "Подтверждение" };
   const refsBlock = refs => {
     if (!refs || !refs.length) return "";
     const groups = {};
@@ -159,6 +159,7 @@
       ${v.measure ? `<h2>Измерения</h2><ul>${v.measure.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       <h2>Типичные ошибки</h2><ul class="err">${v.errors.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
       <h2>Патологические находки</h2><ul>${v.abnormal.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      ${v.confirm ? `<h2>Подтверждение находки</h2><ul class="check">${v.confirm.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       ${(() => { const al = ALGOS.filter(a => a.view === id); return al.length ? `<h2>Алгоритмы для этого среза</h2>${al.map(a => item(`#/algo/${a.id}`, I.algo, a.title, esc(a.finding), "f_" + a.id)).join("")}` : ""; })()}
       ${(() => { const an = ANOMALIES.filter(a => a.views[id]); return an.length ? `<h2>Пороки, видимые на этом срезе</h2>${an.map(a => item(`#/anom/${a.id}`, esc(a.abbr), a.name, esc(a.views[id]), "a_" + a.id, "red")).join("")}` : ""; })()}
       ${refsBlock(v.references)}
@@ -223,8 +224,8 @@
     const a = byId(ANOMALIES, id); if (!a) return notFound();
     const imgs = IMAGES.filter(im => im.cards.includes("anom:" + id));
     const list = ANOMALIES.filter(x => x.period === a.period), i = list.indexOf(a), prev = list[i - 1], next = list[i + 1];
-    const sec = [["keys", "Признаки"], ["views", "По срезам"], ["img", "Эхограммы"], ["ddx", "Дифдиагноз"], ["pitfalls", "Ловушки"], ["refer", "Тактика"], ["refs", "Источники"]]
-      .filter(([k]) => k !== "img" || imgs.length);
+    const sec = [["keys", "Признаки"], ["views", "По срезам"], ["img", "Эхограммы"], ["ddx", "Дифдиагноз"], ["pitfalls", "Ловушки"], ["confirm", "Подтверждение"], ["refer", "Тактика"], ["refs", "Источники"]]
+      .filter(([k]) => (k !== "img" || imgs.length) && (k !== "confirm" || a.confirm));
     return `<div class="crumb"><a href="#/anoms">Пороки</a> / ${esc(byId(PERIODS, a.period).name)}</div>
       <h1>${esc(a.name)}</h1><p class="subtitle" style="margin-top:-.3em">${esc(a.en)}</p>
       <div>${statusBadge(a.status)}</div>
@@ -239,6 +240,7 @@
       <h2>Сочетания</h2><p>${esc(a.assoc)}</p>
       <h2 id="s-pitfalls">Ловушки</h2><ul class="err">${a.pitfalls.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
       <h2>Прогноз</h2><p>${esc(a.prognosis)}</p>
+      ${a.confirm ? `<h2 id="s-confirm">Подтверждение находки</h2><ul class="check">${a.confirm.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       <h2 id="s-refer">Тактика</h2><p>${esc(a.refer)}</p>
       ${(() => { const al = ALGOS.filter(x => x.ddx.some(d => d.id === id)); return al.length ? `<h2>Алгоритмы, ведущие к этому пороку</h2>${al.map(x => item(`#/algo/${x.id}`, I.algo, x.title, esc(x.finding), "f_" + x.id)).join("")}` : ""; })()}
       ${refsBlock(a.references)}

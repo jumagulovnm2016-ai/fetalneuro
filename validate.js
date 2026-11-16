@@ -2,7 +2,7 @@
 var FN = globalThis.FN = globalThis.FN || {};
 (function () {
   const STATUS = ["draft", "approved", "outdated"];
-  const SECTIONS = ["card", "how", "check", "measure", "errors", "abnormal", "structures", "def", "keys", "views", "ddx", "assoc", "pitfalls", "prognosis", "refer"];
+  const SECTIONS = ["card", "how", "check", "measure", "errors", "abnormal", "structures", "def", "keys", "views", "ddx", "assoc", "pitfalls", "prognosis", "refer", "confirm"];
   const SLUG = /^[a-z0-9][a-z0-9-]*$/, DATE = /^\d{4}-\d{2}-\d{2}$/, DOI = /^10\.\d{4,9}\/\S+$/;
   const str = v => typeof v === "string" && v.trim() !== "";
   const strs = v => Array.isArray(v) && v.length > 0 && v.every(str);
@@ -38,6 +38,7 @@ var FN = globalThis.FN = globalThis.FN || {};
       ["abbr", "name"].forEach(f => str(v[f]) || err(w, `нет ${f}`));
       ["aliases", "how", "check", "errors", "abnormal"].forEach(f => strs(v[f]) || err(w, `${f}: нужен непустой массив строк`));
       if (v.measure !== undefined && !strs(v.measure)) err(w, "measure: массив строк");
+      if (v.confirm !== undefined && !strs(v.confirm)) err(w, "confirm: массив строк");
       if (!Array.isArray(v.structures) || !v.structures.length) err(w, "нет structures");
       else v.structures.forEach((s, k) => {
         if (s.n !== k + 1) err(w, `structures[${k}]: номер должен быть ${k + 1}`);
@@ -62,6 +63,7 @@ var FN = globalThis.FN = globalThis.FN || {};
       if (!periods.has(a.period)) err(w, "неизвестный period");
       ["abbr", "name", "en", "def", "assoc", "prognosis", "refer"].forEach(f => str(a[f]) || err(w, `нет ${f}`));
       ["aliases", "keys", "pitfalls"].forEach(f => strs(a[f]) || err(w, `${f}: нужен непустой массив строк`));
+      if (a.confirm !== undefined && !strs(a.confirm)) err(w, "confirm: массив строк");
       if (!a.views || !Object.keys(a.views).length) err(w, "нет views");
       else Object.entries(a.views).forEach(([k, t]) => { if (!views.has(k)) err(w, `views: нет среза ${k}`); if (!str(t)) err(w, `views.${k} пусто`); });
       if (!Array.isArray(a.ddx) || !a.ddx.length) err(w, "нет ddx");

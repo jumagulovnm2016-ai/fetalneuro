@@ -279,21 +279,21 @@ var FN = globalThis.FN = globalThis.FN || {};
       source: CHA("рис. 5")
     },
     {
-      id: "hadi2026-f1", file: "img/hadi2026-f1.jpg", cards: ["anom:mcd", "view:tg-parasag"], status: "draft",
+      id: "hadi2026-f1", file: "img/hadi2026-f1.jpg", cards: ["anom:mcd", "anom:pvnh", "view:tg-parasag"], status: "draft",
       label: "Типы неровного контура бокового желудочка",
       caption: "Schematic representations and corresponding ultrasound images of four main patterns of fetal lateral ventricular border irregularities (protrusion, indentation, undulation and mixed) compared with normal smooth lateral ventricular borders.",
       captionRu: "Схемы авторов и соответствующие эхограммы (парасагиттальные срезы) четырёх основных типов неровного контура бокового желудочка — выпячивания (узловые и неузловые), вдавления (округлые и клиновидные), волнистость и смешанный тип — в сравнении с нормальным гладким контуром (вверху).",
       source: HADI("рис. 1")
     },
     {
-      id: "hadi2026-f3", file: "img/hadi2026-f3.jpg", cards: ["anom:mcd"], status: "draft",
+      id: "hadi2026-f3", file: "img/hadi2026-f3.jpg", cards: ["anom:pvnh"], status: "draft",
       label: "Перивентрикулярная узловая гетеротопия (FLNA), 25–37 нед",
       caption: "Nodular protrusion patterns of lateral ventricular border irregularities representing periventricular nodular heterotopia in three female fetuses with FLNA gene mutation, and corresponding schematic diagrams. (a,b) Case NP1 at 37 weeks: (a) axial transvaginal ultrasound shows multiple diffuse, bilateral, contiguous small nodular protrusions along the lateral ventricular border (LVB) (arrows) with intermediate echogenicity; and (b) corresponding T2-weighted magnetic resonance imaging (MRI) shows low-signal nodules isointense to cortex (arrows). (c,d) Case NP3 at 25 weeks: (c) sagittal transvaginal ultrasound shows small nodular protrusions along lower LVB (arrows) and undulating pattern along upper LVB (arrowheads); and (d) coronal transvaginal ultrasound demonstrates a squared anterior horn (arrowhead). (e,f) Case NP4: (e) sagittal transvaginal ultrasound at 26 weeks shows undulating LVB pattern (arrowheads); and (f) T2-weighted MRI at 28 weeks demonstrates multiple small nodular protrusions along the upper LVB (arrows).",
       captionRu: "Перивентрикулярная узловая гетеротопия у трёх плодов женского пола с мутацией FLNA. (a) 37 нед, аксиальный трансвагинальный срез: множественные мелкие узловые выпячивания вдоль стенок обоих желудочков (стрелки), средней эхогенности; (b) МРТ T2 — узлы изоинтенсивны коре. (c) 25 нед, сагиттальный срез: узелки по нижней стенке (стрелки) и волнистость верхней (наконечники); (d) корональный срез — «квадратный» передний рог. (e) 26 нед: волнистый контур (наконечники); (f) МРТ в 28 нед — множественные узелки по верхней стенке.",
       source: HADI("рис. 3")
     },
     {
-      id: "hadi2026-f6", file: "img/hadi2026-f6.jpg", cards: ["anom:mcd"], status: "draft",
+      id: "hadi2026-f6", file: "img/hadi2026-f6.jpg", cards: ["anom:mcd", "anom:schizencephaly", "anom:pvnh"], status: "draft",
       label: "Контур желудочков при пороках коры; шизэнцефалия, 24–35 нед",
       caption: "Patterns of lateral ventricular border irregularities (LVBI) observed with malformations of cortical development, and corresponding schematic diagrams. (a–c) Case M2, diagnosed prenatally with atretic posterior encephalocele. Sagittal (a,b) and coronal (c) transvaginal ultrasound at 24 weeks shows a mixed LVBI pattern including undulations (arrow heads), wedge-shaped indentation (hollow arrow) and abnormal sulcation (curved line). Autopsy demonstrated periventricular nodular heterotopia (PNH) and subcortical heterotopia. (d,e) Case M1. ... (f,g) Case M3. ... (h–j) Case WI13. (h) Coronal transvaginal ultrasound at 32 weeks shows a deep wedge-shaped indentation (hollow arrow), extending into unilateral cleft schizencephaly. (i,j) Coronal T2-weighted MRI at 32 weeks (i) better delineates the transmantle cleft (hollow arrow), with a corresponding wedge-shaped indentation in the sagittal view (j) (hollow arrow). Ipsilateral perisylvian polymicrogyria is evident (curved line).",
       captionRu: "Контур желудочков при пороках коры. (a–c) 24 нед: смешанный тип — волнистость (наконечники), клиновидное вдавление (полая стрелка), аномальная сулькация (изогнутая линия); на аутопсии — перивентрикулярная и субкортикальная гетеротопия. (d,e) 24 нед: смешанный тип и аномальная сулькация над стенкой желудочка; сочетание с агенезией мозолистого тела и колобомой сетчатки — вероятен синдром Айкарди. (f,g) 35 нед: клиновидные вдавления и узловые выпячивания; МРТ подтверждает гетеротопию. (h–j) 32 нед: глубокое клиновидное вдавление, переходящее в одностороннюю шизэнцефалию; на МРТ — сквозная расщелина и полимикрогирия вокруг сильвиевой борозды на той же стороне.",

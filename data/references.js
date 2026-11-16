@@ -244,6 +244,36 @@ FN.REFS = {
     authors: "Di Mascio D, Rizzo G, Khalil A, D'Antonio F, et al.",
     journal: "Ultrasound Obstet Gynecol", year: 2023, volume: "61", issue: "1", pages: "67–73",
     doi: "10.1002/uog.26054", pmid: "36056700", url: "https://doi.org/10.1002/uog.26054"
+  },
+  "pogledic-2024-review": {
+    title: "Prenatal assessment of brain malformations on neuroimaging: an expert panel review",
+    authors: "Pogledic I, Mankad K, Severino M, et al.",
+    journal: "Brain", year: 2024, volume: "147", issue: "12", pages: "3982–4002",
+    doi: "10.1093/brain/awae253", pmid: "39054600", url: "https://doi.org/10.1093/brain/awae253"
+  },
+  "howe-2011-schiz": {
+    title: "Schizencephaly prevalence, prenatal diagnosis and clues to etiology: a register-based study",
+    authors: "Howe DT, Rankin J, Draper ES",
+    journal: "Ultrasound Obstet Gynecol", year: 2012, volume: "39", issue: "1", pages: "75–82",
+    doi: "10.1002/uog.9069", pmid: "21647999", url: "https://doi.org/10.1002/uog.9069"
+  },
+  "kutuk-2014-schiz": {
+    title: "Prenatal Diagnosis and Postnatal Outcome of Schizencephaly",
+    authors: "Kutuk MS, Gorkem SB, Bayram A, Doganay S, Canpolat M, Basbug M",
+    journal: "J Child Neurol", year: 2015, volume: "30", issue: "10", pages: "1388–1394",
+    doi: "10.1177/0883073814556312", pmid: "25535059", url: "https://doi.org/10.1177/0883073814556312"
+  },
+  "rios-2012-schiz": {
+    title: "Prenatal and Postnatal Schizencephaly Findings by 2D and 3D Ultrasound: Pictorial Essay",
+    authors: "Rios LTM, Araujo Júnior E, Nardozza LMM, Caetano ACR, Moron AF, Martins MG",
+    journal: "J Clin Imaging Sci", year: 2012, volume: "2", pages: "30",
+    doi: "10.4103/2156-7514.96546", pmid: "22754744", url: "https://doi.org/10.4103/2156-7514.96546"
+  },
+  "pascual-2011-schiz": {
+    title: "Schizencephaly: a study of 16 patients",
+    authors: "Pascual-Castroviejo I, Pascual-Pascual SI, Velazquez-Fragua R, Viaño J, Quiñones D",
+    journal: "Neurologia", year: 2012, volume: "27", issue: "8", pages: "491–499",
+    doi: "10.1016/j.nrl.2011.06.005", pmid: "21890242", url: "https://doi.org/10.1016/j.nrl.2011.06.005"
   }
 };
 
@@ -252,7 +282,7 @@ FN.REFS = {
   const T = {
     guideline: ["isuog-2023-11-14", "isuog-2020-cns-1", "isuog-2021-cns-2", "smfm-2018-vm", "rcog-2024-cmv"],
     systematic: ["pagani-2014-vm", "santo-2012-acc", "dantonio-2016-pf1", "parisi-2025-pf", "mappa-2024-cortex", "chibueze-2017-mc", "stefanska-2026-cmv"],
-    review: ["chaoui-2010-editorial", "lermansagie-2021-mcd", "gafner-2025-disrupt"]
+    review: ["chaoui-2010-editorial", "lermansagie-2021-mcd", "gafner-2025-disrupt", "pogledic-2024-review", "rios-2012-schiz"]
   };
   Object.keys(FN.REFS).forEach(id => { FN.REFS[id].type = "original"; });
   Object.entries(T).forEach(([t, ids]) => ids.forEach(id => { if (FN.REFS[id]) FN.REFS[id].type = t; }));
