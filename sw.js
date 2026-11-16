@@ -2,7 +2,7 @@
    Важно: на домене *.github.io кэши общие для всех приложений автора,
    поэтому удаляются ТОЛЬКО кэши с префиксом "fetalneuro-". */
 const PREFIX = "fetalneuro-";
-const VERSION = "v3";
+const VERSION = "v4";
 const APP_CACHE = `${PREFIX}app-${VERSION}`;
 const FONT_CACHE = `${PREFIX}fonts-v1`;
 /* Эхограммы (img/, если появятся) не входят в предзагрузку: кэшируются при первом просмотре
@@ -11,7 +11,7 @@ const IMG_CACHE = `${PREFIX}img-v1`;
 const KEEP = [APP_CACHE, FONT_CACHE, IMG_CACHE];
 const FILES = [
   "./", "index.html", "style.css", "app.js", "schemes.js", "search.js", "validate.js", "progress.js", "install.js",
-  "data/meta.js", "data/references.js", "data/views.js", "data/quiz.js",
+  "data/meta.js", "data/references.js", "data/views.js", "data/quiz.js", "data/images.js",
   "manifest.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png", "icons/favicon-64.png"
 ];
 const FONT_HOSTS = ["fonts.googleapis.com", "fonts.gstatic.com"];

@@ -301,3 +301,9 @@ figure.imgfig .cap-en p{margin:6px 0 0}
 .plan-item{opacity:.7}
 .plan-item .tile{background:var(--surface2);color:var(--muted)}
 .badge.soon{background:var(--surface2);color:var(--muted)}
+.echo-list{display:grid;gap:14px;margin-top:12px}
+@media (min-width:860px){.echo-list{grid-template-columns:1fr 1fr}}
+figure.echo{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+figure.echo img{display:block;width:100%;height:auto;background:#000}
+figure.echo figcaption{padding:10px 12px;font-size:.86rem;line-height:1.45}
+figure.echo .orig,figure.echo .cred{display:block;margin-top:6px;font-size:.74rem;color:var(--muted)}

@@ -51,3 +51,15 @@ test("service worker: все файлы из FILES существуют", () => 
   const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
   for (const m of html.matchAll(/<script src="([^"]+)"/g)) assert.ok(files.includes(m[1]), `${m[1]} нет в FILES`);
 });
+
+test("эхограммы: файлы есть, привязки к существующим срезам, лицензия CC BY и DOI", () => {
+  const views = new Set(FN.VIEWS.map(v => v.id));
+  for (const im of FN.IMAGES) {
+    assert.ok(fs.existsSync(path.join(ROOT, im.file)), im.file);
+    assert.ok(fs.statSync(path.join(ROOT, im.file)).size < 2e6, `${im.file} больше 2 МБ`);
+    for (const c of im.cards) assert.ok(c.startsWith("view:") && views.has(c.slice(5)), `${im.id} → ${c}`);
+    assert.match(im.source.license, /^CC BY/);
+    assert.ok(im.source.doi && im.caption && im.captionRu, im.id);
+    assert.notEqual(im.status, "approved", im.id);
+  }
+});

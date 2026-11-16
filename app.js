@@ -85,7 +85,7 @@
     <span class="li-body"><b>${esc(p.name)}</b><br><span class="badge soon">в разработке</span></span></div>`;
 
   const foot = () => `<footer class="foot">${esc(META.title)} ${esc(META.version)} · ${esc(META.author)} · ${esc(META.updated)}<br>
-    Учебный материал для врачей. Не заменяет экспертную нейросонографию и клиническое решение. Схемы условные, не являются УЗ-изображениями.</footer>`;
+    Учебный материал для врачей. Не заменяет экспертную нейросонографию и клиническое решение. Эхограммы — из статей открытого доступа (CC BY 4.0), авторы и лицензии указаны под каждым снимком.</footer>`;
   const doneBtn = key => `<button class="btn ${isDone(key) ? "done" : ""}" data-done="${key}">${isDone(key) ? "✓ Изучено" : "Отметить как изученное"}</button>`;
 
   /* ---------- страницы ---------- */
@@ -143,15 +143,10 @@
     const list = VIEWS.filter(x => x.period === v.period);
     const idx = list.indexOf(v), prev = list[idx - 1], next = list[idx + 1];
     const period = byId(PERIODS, v.period);
-    const legend = `<ol class="legend-n">${v.structures.map(s => `<li><button type="button" data-n="${s.n}" aria-pressed="false">
-      <span class="ln">${s.n}</span><span><b>${esc(s.name)}</b>${s.note ? `<small>${esc(s.note)}</small>` : ""}</span></button></li>`).join("")}</ol>`;
     return `<div class="crumb"><a href="#/views">Срезы</a> / ${esc(period.name)}</div>
       <h1>${esc(v.name)}</h1>
       <div>${statusBadge(v.status)}</div>
-      ${SCHEMES[id] ? `<div class="scheme-wrap" style="margin-top:12px">
-        <figure class="scheme" id="schemeFig">${SCHEMES[id]()}<figcaption>Нажмите на структуру в легенде — номер подсветится.</figcaption></figure>
-        ${legend}
-      </div>` : `<div class="note info" style="margin-top:12px">Здесь будет эхограмма среза из открытого источника с номерами структур и легендой. Изображение готовится.</div>`}
+      ${echoBlock(v)}
       <h2>Как получить</h2><ol class="steps">${v.how.map(x => `<li>${esc(x)}</li>`).join("")}</ol>
       <h2>Что оценить в норме</h2><ul class="check">${v.check.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
       ${v.measure ? `<h2>Измерения</h2><ul>${v.measure.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
@@ -162,6 +157,24 @@
       <div class="pager">
         ${prev ? `<a class="card" href="#/view/${prev.id}"><small>← Назад</small><b>${esc(prev.abbr)}</b></a>` : ""}
         ${next ? `<a class="card next" href="#/view/${next.id}"><small>Далее →</small><b>${esc(next.abbr)}</b></a>` : ""}</div>${foot()}`;
+  }
+
+  /* ---------- эхограммы из открытых источников ---------- */
+  const IMAGES = FN.IMAGES || [];
+  const credit = s => `${esc(s.authors)}. ${esc(s.title)}. <i>${esc(s.journal)}</i> ${s.year}, ${esc(s.figure)}.
+    <a href="${esc(s.url)}" target="_blank" rel="noopener">doi:${esc(s.doi)}</a>.
+    Лицензия <a href="${esc(s.licenseUrl)}" target="_blank" rel="noopener">${esc(s.license)}</a>; изменения: ${esc(s.changes)}.`;
+  function echoBlock(v) {
+    const list = IMAGES.filter(im => im.cards.includes("view:" + v.id));
+    const what = `<h2>Что найти на эхограмме</h2><ol class="steps">${v.structures.map(s => `<li><b>${esc(s.name)}</b>${s.note ? ` — ${esc(s.note)}` : ""}</li>`).join("")}</ol>`;
+    if (!list.length) return `<div class="note info" style="margin-top:12px">Эхограмма этого среза из открытого источника пока подбирается.</div>${what}`;
+    return `<div class="echo-list">${list.map(im => `<figure class="echo">
+        <a href="${esc(im.file)}" target="_blank" rel="noopener"><img src="${esc(im.file)}" alt="${esc(im.label)}" loading="lazy" decoding="async"></a>
+        <figcaption><b>${esc(im.label)}.</b> ${esc(im.captionRu)}
+          <span class="orig">Подпись авторов: «${esc(im.caption)}»</span>
+          <span class="cred">${credit(im.source)}</span></figcaption></figure>`).join("")}</div>
+      ${list.some(im => im.status !== "approved") ? `<p class="small muted">${statusBadge("draft")} Подбор снимков к срезу и перевод подписей — черновик, ждут проверки автором. Снимки не подтверждают текст карточки: источники утверждений — в разделе «Источники».</p>` : ""}
+      ${what}`;
   }
 
   function planPage() {
