@@ -63,6 +63,22 @@ var FN = globalThis.FN = globalThis.FN || {};
     license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
     changes: "без изменений"
   };
+  const VIN = {
+    authors: "Viñals F, et al.",
+    title: "Anomalies on anterior and posterior complex views in fetuses with partial agenesis of corpus callosum",
+    journal: "Ultrasound Obstet Gynecol", year: 2025, figure: "рис. 6",
+    doi: "10.1002/uog.29292", url: "https://doi.org/10.1002/uog.29292",
+    license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    changes: "оставлена панель (c), увеличена в 2 раза; цифры и буква панели — авторов"
+  };
+  const BER = {
+    authors: "Berbeka K, Świetlicki A, Stefańska K, et al.",
+    title: "The Value of Transvaginal Neurosonography in the Detection of Fetal Ganglionic Eminence Abnormalities",
+    journal: "Life (Basel)", year: 2026, figure: "рис. 2",
+    doi: "10.3390/life16081362", url: "https://doi.org/10.3390/life16081362",
+    license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    changes: "из каждой пары снимков оставлен вариант со стрелкой (без измерений); буквы панелей и стрелки — авторов"
+  };
   FN.IMAGES = [
     {
       id: "ungureanu2023-f1a", file: "img/ungureanu2023-f1a.jpg", cards: ["view:t1-axial"], status: "draft",
@@ -189,6 +205,27 @@ var FN = globalThis.FN = globalThis.FN || {};
       caption: "...a transverse view of the fetal skull at the level of the posterior fossa ... around 21 weeks 2 days gestation, showing dilated cerebral ventricles (blue arrows), cerebellar hypoplasia (yellow arrow), the trans-cerebellar diameter was 17.59 mm (6 percentile, z score is minus 1.59), cisterna magna was normal (green arrow), and falx cerebri was normal (white arrow).",
       captionRu: "Поперечный срез на уровне задней черепной ямки в 21 нед 2 дня: расширенные желудочки (синие стрелки), гипоплазия мозжечка (жёлтая стрелка; поперечный размер 17,59 мм — 6-й перцентиль), большая цистерна нормальная (зелёная стрелка), серп нормальный (белая стрелка).",
       source: Object.assign({}, TAM, { figure: "рис. 8" })
+    },
+    {
+      id: "vinals2025-f6c", file: "img/vinals2025-f6c.jpg", cards: ["view:tg-midsag", "anom:acc"], status: "draft",
+      label: "Срединный сагиттальный срез, 22 нед (норма, трансвагинально)",
+      caption: "(c) Transvaginal image in midsagittal plane showing all parts of the corpus callosum, including rostrum (1), genu (2), body (3) and splenium (4)",
+      captionRu: "Нормальный плод, 22 нед, трансвагинальный доступ, срединная сагиттальная плоскость: видны все отделы мозолистого тела — клюв (1), колено (2), тело (3) и валик (4). Значение «**» — см. подпись в оригинале статьи.",
+      source: VIN
+    },
+    {
+      id: "berbeka2026-f2a", file: "img/berbeka2026-f2a.jpg", cards: ["view:tg-coronal"], status: "draft",
+      label: "Корональный срез: ганглионарные бугорки",
+      caption: "(A) Coronal view showing the GE (arrow) located inferolateral to the frontal horns of the lateral ventricles.",
+      captionRu: "Корональный срез: ганглионарный бугорок (ГБ, стрелка) расположен книзу и латеральнее передних рогов боковых желудочков.",
+      source: BER
+    },
+    {
+      id: "berbeka2026-f2b", file: "img/berbeka2026-f2b.jpg", cards: ["view:tg-parasag"], status: "draft",
+      label: "Парасагиттальный срез: ганглионарный бугорок",
+      caption: "(B) Parasagittal view demonstrating the normal appearance of the GE (arrow) anterior and inferior to the choroid plexus within the caudothalamic groove.",
+      captionRu: "Парасагиттальный срез: нормальный вид ганглионарного бугорка (стрелка) кпереди и книзу от сосудистого сплетения, в каудоталамической борозде.",
+      source: BER
     }
   ];
 })();
