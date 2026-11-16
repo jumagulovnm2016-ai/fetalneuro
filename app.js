@@ -133,7 +133,7 @@
         const vs = VIEWS.filter(v => v.period === p.id), plan = PLAN.filter(x => x.period === p.id && x.type === "view");
         if (!vs.length && !plan.length) return "";
         return `<h2>${esc(p.name)}</h2><p class="small muted" style="margin-top:-.4em">${esc(p.sub)}</p>
-          ${vs.map(v => item(`#/view/${v.id}`, esc(v.abbr), v.name, `${v.check.length} пунктов нормы · ${v.structures.length} структур на схеме`, "v_" + v.id)).join("")}
+          ${vs.map(v => item(`#/view/${v.id}`, esc(v.abbr), v.name, `${v.check.length} пунктов нормы`, "v_" + v.id)).join("")}
           ${plan.map(planItem).join("")}`;
       }).join("")}${foot()}`;
   }
@@ -148,10 +148,10 @@
     return `<div class="crumb"><a href="#/views">Срезы</a> / ${esc(period.name)}</div>
       <h1>${esc(v.name)}</h1>
       <div>${statusBadge(v.status)}</div>
-      <div class="scheme-wrap" style="margin-top:12px">
-        <figure class="scheme" id="schemeFig">${SCHEMES[id] ? SCHEMES[id]() : ""}<figcaption>Рисунок в эхографическом стиле, не эхограмма; пропорции и яркость условные. Нажмите на структуру в легенде — номер подсветится.</figcaption></figure>
+      ${SCHEMES[id] ? `<div class="scheme-wrap" style="margin-top:12px">
+        <figure class="scheme" id="schemeFig">${SCHEMES[id]()}<figcaption>Нажмите на структуру в легенде — номер подсветится.</figcaption></figure>
         ${legend}
-      </div>
+      </div>` : `<div class="note info" style="margin-top:12px">Здесь будет эхограмма среза из открытого источника с номерами структур и легендой. Изображение готовится.</div>`}
       <h2>Как получить</h2><ol class="steps">${v.how.map(x => `<li>${esc(x)}</li>`).join("")}</ol>
       <h2>Что оценить в норме</h2><ul class="check">${v.check.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
       ${v.measure ? `<h2>Измерения</h2><ul>${v.measure.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}

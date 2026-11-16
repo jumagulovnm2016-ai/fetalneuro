@@ -16,9 +16,9 @@ test("пока нет экспертной проверки — всё черн�
   for (const v of FN.VIEWS) assert.notEqual(v.status, "approved", v.id);
 });
 
-test("схема есть для каждого среза, номера на схеме совпадают с легендой", () => {
+test("если у среза есть изображение, номера на нём совпадают с легендой", () => {
   for (const v of FN.VIEWS) {
-    assert.ok(FN.SCHEMES[v.id], `нет схемы ${v.id}`);
+    if (!FN.SCHEMES[v.id]) continue;
     const svg = FN.SCHEMES[v.id]();
     const nums = new Set([...svg.matchAll(/data-n="(\d+)"/g)].map(m => +m[1]));
     assert.equal(JSON.stringify([...nums].sort((a, b) => a - b)), JSON.stringify(v.structures.map(s => s.n)), v.id);
