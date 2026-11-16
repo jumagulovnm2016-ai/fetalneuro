@@ -22,7 +22,43 @@ var FN = globalThis.FN = globalThis.FN || {};
     license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
     changes: "без изменений"
   };
+  const UNG = {
+    authors: "Ungureanu, Drăgușin, Căpitănescu и соавт.",
+    title: "First Trimester Ultrasound Detection of Fetal Central Nervous System Anomalies",
+    journal: "Brain Sci", year: 2023, figure: "рис. 1",
+    doi: "10.3390/brainsci13010118", url: "https://doi.org/10.3390/brainsci13010118",
+    license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    changes: "панель вырезана из составного рисунка, подписи и буква панели — авторов"
+  };
   FN.IMAGES = [
+    {
+      id: "ungureanu2023-f1a", file: "img/ungureanu2023-f1a.jpg", cards: ["view:t1-axial"], status: "draft",
+      label: "Аксиальный срез: сосудистые сплетения",
+      caption: "transverse view of the brain showing the contour and shape of the fetal skull, choroid plexus (arrow) and the filling of lateral cerebral ventricles (arrow)",
+      captionRu: "Поперечный срез головы: контур и форма черепа, сосудистое сплетение (стрелка) и заполнение боковых желудочков (стрелка).",
+      source: UNG
+    },
+    {
+      id: "ungureanu2023-f1b", file: "img/ungureanu2023-f1b.jpg", cards: ["view:t1-axial"], status: "draft",
+      label: "Поперечный срез: III желудочек",
+      caption: "further evaluation of the cerebral ventricular system, in transverse planes of the brain showing the third ventricle",
+      captionRu: "Дальнейшая оценка желудочковой системы в поперечном срезе: III желудочек.",
+      source: UNG
+    },
+    {
+      id: "ungureanu2023-f1c", file: "img/ungureanu2023-f1c.jpg", cards: ["view:t1-axial"], status: "draft",
+      label: "Поперечный срез: сильвиев водопровод",
+      caption: "transverse planes of the brain showing the aqueduct of Sylvius (arrow)",
+      captionRu: "Поперечный срез головы: сильвиев водопровод (стрелка).",
+      source: UNG
+    },
+    {
+      id: "ungureanu2023-f1d", file: "img/ungureanu2023-f1d.jpg", cards: ["view:t1-midsag"], status: "draft",
+      label: "Срединный сагиттальный срез: измерения",
+      caption: "mid-sagittal view of the brain showing the thalamus (Tha) and the measurements for the brain stem (BS), the fourth ventricle (IT), cisterna magna (CM), the nuchal translucency (NT) and the brain stem–occipital bone ratio (BSOB)",
+      captionRu: "Срединный сагиттальный срез головы: таламус (Tha) и измерения ствола мозга (BS), IV желудочка (IT), большой цистерны (CM), ТВП (NT) и BSOB.",
+      source: UNG
+    },
     {
       id: "feng2022-f2", file: "img/feng2022-f2.jpg", cards: ["view:t1-midsag"], status: "draft",
       label: "Срез для ТВП и задний мозг",
@@ -38,25 +74,11 @@ var FN = globalThis.FN = globalThis.FN || {};
       source: HU
     },
     {
-      id: "hu2023-f1c", file: "img/hu2023-f1c.jpg", cards: ["view:t1-axial"], status: "draft",
-      label: "Трансвентрикулярный срез",
-      caption: "the transventricular plane",
-      captionRu: "Трансвентрикулярный срез (по авторам: сосудистые сплетения, боковые желудочки, серп мозга).",
-      source: HU
-    },
-    {
-      id: "hu2023-f1d", file: "img/hu2023-f1d.jpg", cards: ["view:t1-axial"], status: "draft",
-      label: "Трансталамический срез",
-      caption: "the transthalamus plane",
-      captionRu: "Трансталамический срез (по авторам: таламусы и целостность костей черепа).",
-      source: HU
-    },
-    {
-      id: "hu2023-f1a", file: "img/hu2023-f1a.jpg", cards: ["view:t1-spine"], status: "draft",
-      label: "Срединный сагиттальный срез плода",
-      caption: "midsagittal plane of the fetus",
-      captionRu: "Срединный сагиттальный срез плода (в статье — для измерения КТР). Это не прицельный срез позвоночника: позвоночник и кожа спины видны вдоль всего плода.",
-      source: HU
+      id: "ungureanu2023-f1e", file: "img/ungureanu2023-f1e.jpg", cards: ["view:t1-spine"], status: "draft",
+      label: "Продольный срез позвоночника",
+      caption: "longitudinal view of the spine regularity and underlying skin (arrow)",
+      captionRu: "Продольный срез позвоночника: правильность ряда позвонков и покрывающая кожа (стрелка).",
+      source: UNG
     }
   ];
 })();

@@ -2,7 +2,7 @@
    Важно: на домене *.github.io кэши общие для всех приложений автора,
    поэтому удаляются ТОЛЬКО кэши с префиксом "fetalneuro-". */
 const PREFIX = "fetalneuro-";
-const VERSION = "v4";
+const VERSION = "v5";
 const APP_CACHE = `${PREFIX}app-${VERSION}`;
 const FONT_CACHE = `${PREFIX}fonts-v1`;
 /* Эхограммы (img/, если появятся) не входят в предзагрузку: кэшируются при первом просмотре
