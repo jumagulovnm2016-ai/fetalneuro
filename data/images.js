@@ -47,6 +47,22 @@ var FN = globalThis.FN = globalThis.FN || {};
     license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
     changes: "без изменений"
   };
+  const MAT = {
+    authors: "Matasariu DR, Bujor IE, Gireada RM, et al.",
+    title: "Challenges in Prenatal Ultrasound Diagnosis of Rubinstein–Taybi Syndrome: A Case Report and Comprehensive Literature Review",
+    journal: "Int J Mol Sci", year: 2025, figure: "рис. 2",
+    doi: "10.3390/ijms26115142", url: "https://doi.org/10.3390/ijms26115142",
+    license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    changes: "панель вырезана из составного рисунка"
+  };
+  const TAM = {
+    authors: "Tamhankar PM, Kachhadiya T, Tamhankar V, et al.",
+    title: "The First Known Case Report of a Novel Homozygous Nonsense Variant in the OSBPL9 Gene Associated With Fetal Cerebral Ventriculomegaly, Cerebellar Hypoplasia, and Arthrogryposis Multiplex",
+    journal: "Cureus", year: 2025, figure: "рис. 9",
+    doi: "10.7759/cureus.80010", url: "https://doi.org/10.7759/cureus.80010",
+    license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    changes: "без изменений"
+  };
   FN.IMAGES = [
     {
       id: "ungureanu2023-f1a", file: "img/ungureanu2023-f1a.jpg", cards: ["view:t1-axial"], status: "draft",
@@ -138,6 +154,27 @@ var FN = globalThis.FN = globalThis.FN || {};
       caption: "Transventricular plane of a fetus in a normal pregnancy at the 24th week of gestation. The size of the cavum septi pellucidi (CSP: 4.3 mm) and the size of the lateral ventricle (PV: 6.7 mm) were measured",
       captionRu: "Трансвентрикулярная плоскость, нормальная беременность, 24 нед. Измерены полость прозрачной перегородки (CSP: 4,3 мм) и ширина бокового желудочка (PV: 6,7 мм).",
       source: CAST
+    },
+    {
+      id: "matasariu2025-f2a", file: "img/matasariu2025-f2a.jpg", cards: ["view:b-transthalamic"], status: "draft",
+      label: "Трансталамическая плоскость, 21 нед",
+      caption: "Series of second-trimester morphological ultrasound images of the fetus at 21 weeks of gestation, with normal appearance (the first image shows a transthalamic view of the fetal head...)",
+      captionRu: "Трансталамическая плоскость в 21 нед 6 дней, описана авторами как нормальная; измерены БПР, ЛЗР, ОГ, CSP. У этого плода позже диагностирован синдром Рубинштейна–Тейби; на снимках ЦНС отклонений нет.",
+      source: MAT
+    },
+    {
+      id: "matasariu2025-f2b", file: "img/matasariu2025-f2b.jpg", cards: ["view:b-transcerebellar"], status: "draft",
+      label: "Трансцеребеллярная плоскость, 21 нед",
+      caption: "...the second one shows a transcerebral view... Abbreviations: CM (cisterna magna); Cereb (Cerebellum); NF/NT (nuchal fold)",
+      captionRu: "Трансцеребеллярная плоскость в 21 нед 6 дней, описана авторами как нормальная; измерены мозжечок (Cereb), большая цистерна (CM) и шейная складка (NF). У этого плода позже диагностирован синдром Рубинштейна–Тейби; на снимках ЦНС отклонений нет.",
+      source: MAT
+    },
+    {
+      id: "tamhankar2025-f9", file: "img/tamhankar2025-f9.jpg", cards: ["view:b-spine"], status: "draft",
+      label: "Сагиттальный срез позвоночника, 21 нед",
+      caption: "Antenatal ultrasound of the fetus in the second pregnancy at around 21 weeks 2 days gestation, showing a sagittal view of the spine (ceph: cephalic side, caud: caudal side) with normal anatomy; the cervical (white arrow), thoracic (red arrow), and lumbar (yellow arrow) segments are seen with normal curvature.",
+      captionRu: "Сагиттальный срез позвоночника в 21 нед 2 дня, нормальная анатомия: шейный (белая стрелка), грудной (красная) и поясничный (жёлтая) отделы с нормальным изгибом. Ceph — головной конец, Caud — каудальный. У этого плода были вентрикуломегалия, гипоплазия мозжечка и артрогрипоз; позвоночник авторы описывают как нормальный.",
+      source: TAM
     }
   ];
 })();
