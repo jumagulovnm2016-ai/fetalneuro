@@ -16,17 +16,27 @@ var FN = globalThis.FN = globalThis.FN || {};
   const stem = t => (t.length >= 5 && /[а-я]$/.test(t)) ? t.replace(/(ями|ами|ого|его|ому|ему|ыми|ими|ая|яя|ое|ее|ые|ие|ий|ый|ой|ам|ям|ах|ях|ов|ев|ей|ью|ия|ии|ию|[аяиыеоуюйь])$/, "") : t;
   const tokens = q => normalize(q).split(" ").filter(Boolean).map(stem);
 
-  const LABELS = { how: "Как получить", check: "Норма", measure: "Измерения", errors: "Ошибки", abnormal: "Патология", structures: "Структуры" };
+  const LABELS = { how: "Как получить", check: "Норма", measure: "Измерения", errors: "Ошибки", abnormal: "Патология", structures: "Структуры",
+    def: "Суть", keys: "Признаки", views: "По срезам", ddx: "Дифдиагноз", assoc: "Сочетания", pitfalls: "Ловушки", prognosis: "Прогноз", refer: "Тактика" };
 
+  function doc(type, id, href, title, nameList, fields) {
+    const names = nameList.filter(Boolean).map(n => " " + normalize(n) + " ");
+    const parts = [];
+    Object.entries(fields).forEach(([f, arr]) => (arr || []).forEach(text => parts.push({ field: f, text, norm: normalize(text) })));
+    return { type, id, href, title, names, parts, all: names.join(" ") + " " + parts.map(p => p.norm).join(" ") };
+  }
   function buildIndex(D) {
-    return (D.VIEWS || []).map(v => {
+    const anoms = (D.ANOMALIES || []).map(a => doc("anom", a.id, `#/anom/${a.id}`, a.name, [a.abbr, a.name, a.en, ...(a.aliases || [])],
+      { def: [a.def], keys: a.keys, views: Object.values(a.views || {}), ddx: (a.ddx || []).map(d => `${d.name} — ${d.key}`),
+        assoc: [a.assoc], pitfalls: a.pitfalls, prognosis: [a.prognosis], refer: [a.refer] }));
+    return anoms.concat((D.VIEWS || []).map(v => {
       const names = [v.abbr, v.name, ...(v.aliases || [])].map(n => " " + normalize(n) + " ");
       const parts = [];
       const fields = { how: v.how, check: v.check, measure: v.measure, errors: v.errors, abnormal: v.abnormal,
         structures: (v.structures || []).map(s => s.name + (s.note ? " — " + s.note : "")) };
       Object.entries(fields).forEach(([f, arr]) => (arr || []).forEach(text => parts.push({ field: f, text, norm: normalize(text) })));
       return { type: "view", id: v.id, href: `#/view/${v.id}`, title: v.name, names, parts, all: names.join(" ") + " " + parts.map(p => p.norm).join(" ") };
-    });
+    }));
   }
 
   function snippet(part, toks, radius = 60) {

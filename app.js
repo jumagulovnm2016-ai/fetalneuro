@@ -1,5 +1,6 @@
 (() => {
-  const { META, PERIODS, PLAN, VIEWS, QUIZ, REFS, SCHEMES } = FN;
+  const { META, PERIODS, PLAN, VIEWS, QUIZ, REFS } = FN;
+  const ANOMALIES = FN.ANOMALIES || [];
   const check = FN.validate ? FN.validate(FN) : { errors: [] };
   if (check.errors.length) console.error("FetalNeuro: ошибки контента", check.errors);
   const $app = document.getElementById("app");
@@ -90,7 +91,7 @@
 
   /* ---------- страницы ---------- */
   function home() {
-    const total = VIEWS.length, done = Object.keys(studied()).length;
+    const total = VIEWS.length + ANOMALIES.length, done = Object.keys(studied()).length;
     const best = store.get("quizBest", null);
     const feat = (href, icon, cls, title, sub) => `<a class="card feature" href="${href}"><span class="tile ${cls}">${icon}</span>
       <span><h3>${title}</h3><span class="small muted">${sub}</span></span></a>`;
@@ -108,7 +109,8 @@
     </section>
     <div class="grid two">
       ${feat("#/views", I.brain, "", "Срезы 11–14 недель", `${t1.length} среза: схема с легендой, техника, норма, измерения, ошибки, находки.`)}
-      ${feat("#/plan", I.plan, "red", "II–III триместр и пороки", `План разделов: ${PLAN.length} тем в разработке.`)}
+      ${feat("#/anoms", I.brain, "red", "Пороки 11–14 недель", `${ANOMALIES.length} карточки: признаки, срезы, дифдиагноз, ловушки, тактика.`)}
+      ${feat("#/plan", I.plan, "", "План разделов", `II–III триместр и прицельная нейросонография: ${PLAN.length} тем в разработке.`)}
       ${feat("#/quiz", I.quiz, "red", "Проверка знаний", `${QUIZ.length} вопросов с разбором ответов.`)}
     </div>
     <div class="card">
@@ -152,6 +154,7 @@
       ${v.measure ? `<h2>Измерения</h2><ul>${v.measure.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       <h2>Типичные ошибки</h2><ul class="err">${v.errors.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
       <h2>Патологические находки</h2><ul>${v.abnormal.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      ${(() => { const an = ANOMALIES.filter(a => a.views[id]); return an.length ? `<h2>Пороки, видимые на этом срезе</h2>${an.map(a => item(`#/anom/${a.id}`, esc(a.abbr), a.name, esc(a.views[id]), "a_" + a.id, "red")).join("")}` : ""; })()}
       ${refsBlock(v.references)}
       <div class="row" style="margin-top:18px">${doneBtn("v_" + id)}</div>
       <div class="pager">
@@ -165,16 +168,56 @@
     <a href="${esc(s.url)}" target="_blank" rel="noopener">doi:${esc(s.doi)}</a>.
     Лицензия <a href="${esc(s.licenseUrl)}" target="_blank" rel="noopener">${esc(s.license)}</a>; изменения: ${esc(s.changes)}.`;
   function echoBlock(v) {
-    const list = IMAGES.filter(im => im.cards.includes("view:" + v.id));
     const what = `<h2>Что найти на эхограмме</h2><ol class="steps">${v.structures.map(s => `<li><b>${esc(s.name)}</b>${s.note ? ` — ${esc(s.note)}` : ""}</li>`).join("")}</ol>`;
+    const list = IMAGES.filter(im => im.cards.includes("view:" + v.id));
     if (!list.length) return `<div class="note info" style="margin-top:12px">Эхограмма этого среза из открытого источника пока подбирается.</div>${what}`;
+    return gallery(list) + what;
+  }
+  function gallery(list) {
     return `<div class="echo-list">${list.map(im => `<figure class="echo">
         <a href="${esc(im.file)}" target="_blank" rel="noopener"><img src="${esc(im.file)}" alt="${esc(im.label)}" loading="lazy" decoding="async"></a>
         <figcaption><b>${esc(im.label)}.</b> ${esc(im.captionRu)}
           <span class="orig">Подпись авторов: «${esc(im.caption)}»</span>
           <span class="cred">${credit(im.source)}</span></figcaption></figure>`).join("")}</div>
-      ${list.some(im => im.status !== "approved") ? `<p class="small muted">${statusBadge("draft")} Подбор снимков к срезу и перевод подписей — черновик, ждут проверки автором. Снимки не подтверждают текст карточки: источники утверждений — в разделе «Источники».</p>` : ""}
-      ${what}`;
+      ${list.some(im => im.status !== "approved") ? `<p class="small muted">${statusBadge("draft")} Подбор снимков к срезу и перевод подписей — черновик, ждут проверки автором. Снимки не подтверждают текст карточки: источники утверждений — в разделе «Источники».</p>` : ""}`;
+  }
+
+  /* ---------- пороки ---------- */
+  function anomList() {
+    return `<h1>Пороки ЦНС</h1>
+      <p class="subtitle">Что можно заподозрить уже в 11–14 нед: признаки, срезы, дифдиагноз, ловушки, тактика. Карточки — черновики на проверке автора.</p>
+      ${PERIODS.map(p => {
+        const list = ANOMALIES.filter(a => a.period === p.id), plan = PLAN.filter(x => x.period === p.id && x.type === "anomaly");
+        if (!list.length && !plan.length) return "";
+        return `<h2>${esc(p.name)}</h2>${list.map(a => item(`#/anom/${a.id}`, esc(a.abbr), a.name, esc(a.en), "a_" + a.id, "red")).join("")}${plan.map(planItem).join("")}`;
+      }).join("")}${foot()}`;
+  }
+  function anomPage(id) {
+    const a = byId(ANOMALIES, id); if (!a) return notFound();
+    const imgs = IMAGES.filter(im => im.cards.includes("anom:" + id));
+    const list = ANOMALIES.filter(x => x.period === a.period), i = list.indexOf(a), prev = list[i - 1], next = list[i + 1];
+    const sec = [["keys", "Признаки"], ["views", "По срезам"], ["img", "Эхограммы"], ["ddx", "Дифдиагноз"], ["pitfalls", "Ловушки"], ["refer", "Тактика"], ["refs", "Источники"]]
+      .filter(([k]) => k !== "img" || imgs.length);
+    return `<div class="crumb"><a href="#/anoms">Пороки</a> / ${esc(byId(PERIODS, a.period).name)}</div>
+      <h1>${esc(a.name)}</h1><p class="subtitle" style="margin-top:-.3em">${esc(a.en)}</p>
+      <div>${statusBadge(a.status)}</div>
+      <nav class="toc">${sec.map(([k, t]) => `<a href="javascript:void(0)" data-jump="${k}">${t}</a>`).join("")}</nav>
+      <h2>Суть</h2><p>${esc(a.def)}</p>
+      <h2 id="s-keys">Признаки</h2><ul class="check">${a.keys.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <h2 id="s-views">По срезам</h2>${Object.entries(a.views).map(([vid, t]) => { const v = byId(VIEWS, vid);
+        return `<a class="card list-item" href="#/view/${vid}"><span class="tile">${esc(v.abbr)}</span><span class="li-body"><b>${esc(v.name)}</b><br><span class="small">${esc(t)}</span></span>${I.chev}</a>`; }).join("")}
+      ${imgs.length ? `<h2 id="s-img">Эхограммы из открытых источников</h2>${gallery(imgs)}` : ""}
+      <h2 id="s-ddx">Дифдиагноз</h2><div class="ddx">${a.ddx.map(d => { const inner = `<b>${esc(d.name)}</b><span class="small muted">${esc(d.key)}</span>`;
+        return d.id && byId(ANOMALIES, d.id) ? `<a class="card" href="#/anom/${d.id}">${inner}</a>` : `<div class="card">${inner}</div>`; }).join("")}</div>
+      <h2>Сочетания</h2><p>${esc(a.assoc)}</p>
+      <h2 id="s-pitfalls">Ловушки</h2><ul class="err">${a.pitfalls.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <h2>Прогноз</h2><p>${esc(a.prognosis)}</p>
+      <h2 id="s-refer">Тактика</h2><p>${esc(a.refer)}</p>
+      ${refsBlock(a.references)}
+      <div class="row" style="margin-top:18px">${doneBtn("a_" + id)}</div>
+      <div class="pager">
+        ${prev ? `<a class="card" href="#/anom/${prev.id}"><small>← Назад</small><b>${esc(prev.abbr)}</b></a>` : ""}
+        ${next ? `<a class="card next" href="#/anom/${next.id}"><small>Далее →</small><b>${esc(next.abbr)}</b></a>` : ""}</div>${foot()}`;
   }
 
   function planPage() {
@@ -195,7 +238,7 @@
   function startQuiz(n) {
     quiz = { items: shuffle(QUIZ).slice(0, n).map(q => ({ ...q, order: shuffle(q.opts.map((_, i) => i)) })), i: 0, score: 0, answered: false, choice: null, wrong: [] };
   }
-  const qLink = q => q.link ? `<br><a class="small" href="#/view/${q.link}">Открыть срез →</a>` : "";
+  const qLink = q => !q.link ? "" : byId(ANOMALIES, q.link) ? `<br><a class="small" href="#/anom/${q.link}">Открыть карточку порока →</a>` : `<br><a class="small" href="#/view/${q.link}">Открыть срез →</a>`;
   function quizPage() {
     if (!quiz) {
       const best = store.get("quizBest", null);
@@ -242,8 +285,8 @@
     if (!q.trim()) return `<h1>Поиск</h1><p class="muted">Введите запрос: срез, структуру, признак (IT, BSOB, «бабочка», spina bifida).</p>`;
     searchIndex = searchIndex || FN.search.buildIndex(FN);
     const res = FN.search.query(searchIndex, q);
-    const rows = res.map(r => item(r.href, esc(byId(VIEWS, r.id).abbr), r.title,
-      r.snippet ? `<span class="badge view">${esc(r.snippet.label)}</span> ${hl(r.snippet)}` : "срез", "v_" + r.id));
+    const rows = res.map(r => { const an = r.type === "anom", x = byId(an ? ANOMALIES : VIEWS, r.id);
+      return item(r.href, esc(x.abbr), r.title, r.snippet ? `<span class="badge view">${esc(r.snippet.label)}</span> ${hl(r.snippet)}` : an ? "порок" : "срез", (an ? "a_" : "v_") + r.id, an ? "red" : ""); });
     return `<h1>Поиск</h1><p class="subtitle">«${esc(q)}» — найдено: ${res.length}</p>${rows.length ? rows.join("") : '<p class="muted">Ничего не найдено. Попробуйте сокращение (IT, BS, BSOB), английский термин или признак («бабочка»).</p>'}`;
   }
 
@@ -260,6 +303,8 @@
       case "views": html = viewsList(); break;
       case "view": html = viewPage(id); nav = "views"; break;
       case "plan": html = planPage(); break;
+      case "anoms": html = anomList(); break;
+      case "anom": html = anomPage(id); nav = "anoms"; break;
       case "quiz": html = quizPage(); break;
       case "search": html = searchPage(decodeURIComponent((qs || "").replace(/^q=/, ""))); nav = ""; break;
       default: html = notFound();
@@ -281,8 +326,13 @@
   }
 
   $app.addEventListener("click", e => {
-    const t = e.target.closest("button");
+    const t = e.target.closest("button, a[data-jump]");
     if (!t) return;
+    if (t.dataset.jump) {
+      const el = document.getElementById("s-" + t.dataset.jump);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 120, behavior: "smooth" });
+      return;
+    }
     if (t.dataset.done) { toggleDone(t.dataset.done); render(); }
     else if (t.dataset.n) highlightN(t.dataset.n);
     else if (t.dataset.quiz) { startQuiz(+t.dataset.quiz); render(); window.scrollTo(0, 0); }

@@ -13,7 +13,7 @@ test("у каждого источника есть PMID и DOI", () => {
 });
 
 test("пока нет экспертной проверки — всё черновик", () => {
-  for (const v of FN.VIEWS) assert.notEqual(v.status, "approved", v.id);
+  for (const v of [...FN.VIEWS, ...FN.ANOMALIES]) assert.notEqual(v.status, "approved", v.id);
 });
 
 test("если у среза есть изображение, номера на нём совпадают с легендой", () => {
@@ -28,11 +28,14 @@ test("если у среза есть изображение, номера на 
 test("поиск находит по синонимам и аббревиатурам", () => {
   const idx = FN.search.buildIndex(FN);
   const first = q => FN.search.query(idx, q)[0]?.id;
-  assert.equal(first("бабочка"), "t1-axial");
+  assert.equal(FN.search.query(idx, "бабочка").some(r => r.id === "t1-axial"), true);
   assert.equal(first("BSOB"), "t1-midsag");
-  assert.equal(first("IT"), "t1-midsag");
-  assert.equal(first("позвоночник"), "t1-spine");
-  assert.equal(first("четвёртый желудочек"), "t1-midsag");
+  assert.equal(first("intracranial translucency"), "t1-midsag");
+  assert.equal(first("голопрозэнцефалия"), "hpe");
+  assert.equal(first("crash sign"), "osb");
+  assert.equal(first("Денди-Уокер"), "pf-cystic");
+  assert.equal(FN.search.query(idx, "позвоночник").some(r => r.id === "t1-spine"), true);
+  assert.equal(FN.search.query(idx, "четвёртый желудочек").some(r => r.id === "t1-midsag"), true);
 });
 
 test("прогресс: экспорт → импорт без потерь, чужие ключи отбрасываются", () => {
@@ -53,11 +56,11 @@ test("service worker: все файлы из FILES существуют", () => 
 });
 
 test("эхограммы: файлы есть, привязки к существующим срезам, лицензия CC BY и DOI", () => {
-  const views = new Set(FN.VIEWS.map(v => v.id));
+  const views = new Set(FN.VIEWS.map(v => v.id)), anoms = new Set(FN.ANOMALIES.map(a => a.id));
   for (const im of FN.IMAGES) {
     assert.ok(fs.existsSync(path.join(ROOT, im.file)), im.file);
     assert.ok(fs.statSync(path.join(ROOT, im.file)).size < 2e6, `${im.file} больше 2 МБ`);
-    for (const c of im.cards) assert.ok(c.startsWith("view:") && views.has(c.slice(5)), `${im.id} → ${c}`);
+    for (const c of im.cards) { const [k, id] = c.split(":"); assert.ok((k === "view" && views.has(id)) || (k === "anom" && anoms.has(id)), `${im.id} → ${c}`); }
     assert.match(im.source.license, /^CC BY/);
     assert.ok(im.source.doi && im.caption && im.captionRu, im.id);
     assert.notEqual(im.status, "approved", im.id);

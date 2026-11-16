@@ -68,5 +68,29 @@ FN.REFS = {
     authors: "Volpe P, Persico N, Fanelli T, et al.",
     journal: "Am J Obstet Gynecol MFM", year: 2019, volume: "1", issue: "2", pages: "173–181",
     doi: "10.1016/j.ajogmf.2019.06.004", pmid: "33345823", url: "https://doi.org/10.1016/j.ajogmf.2019.06.004"
+  },
+  "hu-2023-cns": {
+    title: "The role of routine first-trimester ultrasound screening for central nervous system abnormalities: a longitudinal single-center study using an unselected cohort with 3-year experience",
+    authors: "Hu Y, Sun L, Feng L, Wang J, Zhu Y, Wu Q",
+    journal: "BMC Pregnancy Childbirth", year: 2023, volume: "23", issue: "1", pages: "312",
+    doi: "10.1186/s12884-023-05644-z", pmid: "37138220", url: "https://doi.org/10.1186/s12884-023-05644-z"
+  },
+  "syngelaki-2019": {
+    title: "Diagnosis of fetal non-chromosomal abnormalities on routine ultrasound examination at 11–13 weeks' gestation",
+    authors: "Syngelaki A, Hammami A, Bower S, Zidere V, Akolekar R, Nicolaides KH",
+    journal: "Ultrasound Obstet Gynecol", year: 2019, volume: "54", issue: "4", pages: "468–476",
+    doi: "10.1002/uog.20844", pmid: "31408229", url: "https://doi.org/10.1002/uog.20844"
+  },
+  "ushakov-2019-crash": {
+    title: "Crash sign: new first-trimester sonographic marker of spina bifida",
+    authors: "Ushakov F, Sacco A, Andreeva E, et al.",
+    journal: "Ultrasound Obstet Gynecol", year: 2019, volume: "54", issue: "6", pages: "740–745",
+    doi: "10.1002/uog.20285", pmid: "30977215", url: "https://doi.org/10.1002/uog.20285"
+  },
+  "ungureanu-2023": {
+    title: "First Trimester Ultrasound Detection of Fetal Central Nervous System Anomalies",
+    authors: "Ungureanu DR, Drăgușin RC, Căpitănescu RG, et al.",
+    journal: "Brain Sci", year: 2023, volume: "13", issue: "1", pages: "118",
+    doi: "10.3390/brainsci13010118", pmid: "36672099", url: "https://doi.org/10.3390/brainsci13010118"
   }
 };

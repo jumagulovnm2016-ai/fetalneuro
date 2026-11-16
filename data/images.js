@@ -23,13 +23,22 @@ var FN = globalThis.FN = globalThis.FN || {};
     changes: "без изменений"
   };
   const UNG = {
-    authors: "Ungureanu, Drăgușin, Căpitănescu и соавт.",
+    authors: "Ungureanu DR, Drăgușin RC, Căpitănescu RG, et al.",
     title: "First Trimester Ultrasound Detection of Fetal Central Nervous System Anomalies",
     journal: "Brain Sci", year: 2023, figure: "рис. 1",
     doi: "10.3390/brainsci13010118", url: "https://doi.org/10.3390/brainsci13010118",
     license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
     changes: "панель вырезана из составного рисунка, подписи и буква панели — авторов"
   };
+  const XUE = {
+    authors: "Xue X, Tu P, Zhang X, Ran S, Zhang X",
+    title: "First-trimester choroid plexus-to-head ratio: a novel sonographic marker for the early detection of fetal central nervous system malformations",
+    journal: "Front Med (Lausanne)", year: 2025, figure: "рис. 2",
+    doi: "10.3389/fmed.2025.1637954", url: "https://doi.org/10.3389/fmed.2025.1637954",
+    license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    changes: "оставлен нижний ряд (эхограммы D–F), схемы A–C убраны"
+  };
+  const UNG_CASE = fig => Object.assign({}, UNG, { figure: fig, changes: "оставлены только эхограммы; фотографии после прерывания беременности убраны; подписи и буквы — авторов" });
   FN.IMAGES = [
     {
       id: "ungureanu2023-f1a", file: "img/ungureanu2023-f1a.jpg", cards: ["view:t1-axial"], status: "draft",
@@ -79,6 +88,41 @@ var FN = globalThis.FN = globalThis.FN || {};
       caption: "longitudinal view of the spine regularity and underlying skin (arrow)",
       captionRu: "Продольный срез позвоночника: правильность ряда позвонков и покрывающая кожа (стрелка).",
       source: UNG
+    },
+    {
+      id: "ungureanu2023-f6a", file: "img/ungureanu2023-f6a.jpg", cards: ["anom:acrania"], status: "draft",
+      label: "Анэнцефалия, 12 нед 4 дня",
+      caption: "A case of anencephaly diagnosed at 12 weeks + 4 days weeks (Case7): (A) sagittal view of the absence of cranial bones ossification (arrow)",
+      captionRu: "Анэнцефалия, диагностирована в 12 нед 4 дня: сагиттальный срез, нет окостенения костей свода черепа (стрелка).",
+      source: UNG_CASE("рис. 6")
+    },
+    {
+      id: "ungureanu2023-f7ab", file: "img/ungureanu2023-f7ab.jpg", cards: ["anom:hpe"], status: "draft",
+      label: "Алобарная голопрозэнцефалия, 12 нед 5 дней",
+      caption: "A case of alobar holoprosencephaly diagnosed at 12 weeks + 5 days (Case 9): (A) transverse view of the abnormal brain cavities; (B) sagittal view of the fetal head showing proboscis (arrow)",
+      captionRu: "Алобарная голопрозэнцефалия, 12 нед 5 дней: (A) поперечный срез — аномальные полости мозга; (B) сагиттальный срез головы — хоботок (стрелка).",
+      source: UNG_CASE("рис. 7")
+    },
+    {
+      id: "ungureanu2023-f3abc", file: "img/ungureanu2023-f3abc.jpg", cards: ["anom:osb"], status: "draft",
+      label: "Открытая spina bifida, 12 нед 3 дня: признаки в голове",
+      caption: "A case of OSB diagnosed at 12 weeks + 3 days (Case 1): (A) transverse view of enlarged choroid plexus (the 'dried up' brain sign, arrow); (B) displacement of mesencephalon and aqueduct of Sylvius and deformation against occipital bone ('the crash sign', arrow); (C) mid-sagittal view of the fetal face showing the displacement of BS, which appears thicker (arrow) and with an increased BS/BSOB ratio",
+      captionRu: "Открытая spina bifida, 12 нед 3 дня: (A) поперечный срез — крупные сосудистые сплетения, признак «сухого мозга» (стрелка); (B) смещение среднего мозга и сильвиева водопровода и деформация о затылочную кость — «crash sign» (стрелка); (C) срединный сагиттальный срез — смещённый, утолщённый ствол мозга, увеличенное отношение BS/BSOB (стрелка).",
+      source: UNG_CASE("рис. 3")
+    },
+    {
+      id: "ungureanu2023-f3d", file: "img/ungureanu2023-f3d.jpg", cards: ["anom:osb"], status: "draft",
+      label: "Открытая spina bifida, 12 нед 3 дня: позвоночник",
+      caption: "(D) sagittal view by transvaginal approach demonstrating the abnormal aspect of the spine—kyphoscoliosis (arrow)",
+      captionRu: "Тот же случай: сагиттальный срез трансвагинальным доступом — изменённый позвоночник, кифосколиоз (стрелка).",
+      source: UNG_CASE("рис. 3")
+    },
+    {
+      id: "xue2025-f2def", file: "img/xue2025-f2def.jpg", cards: ["anom:osb"], status: "draft",
+      label: "«Бабочка» при вентрикуломегалии, spina bifida и микроцефалии",
+      caption: "Illustration and two-dimensional view of the standard axial butterfly plane in fetus with nervous system abnormalities. (A,D) Fetus with ventriculomegaly (VM). (B,E) Fetus with open spina bifida (OSB). (C,F) Fetus with microcephaly. ▲, the lateral ventricles; ✽, the choroid plexus.",
+      captionRu: "Стандартный аксиальный срез «бабочки» в I триместре при патологии: (D) вентрикуломегалия, (E) открытая spina bifida, (F) микроцефалия. ▲ — боковые желудочки, ✽ — сосудистые сплетения.",
+      source: XUE
     }
   ];
 })();
