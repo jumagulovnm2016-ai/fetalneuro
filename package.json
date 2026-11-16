@@ -1,0 +1,8 @@
+{
+  "name": "fetalneuro",
+  "private": true,
+  "description": "FetalNeuro — учебное PWA по нейросонографии плода с 11 недель",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs"
+  }
+}
