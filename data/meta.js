@@ -22,10 +22,6 @@ FN.PLAN = [
   { "period": "targeted", "type": "view", "name": "Сагиттальные срезы: срединный и парасагиттальные" },
   { "period": "targeted", "type": "view", "name": "Мозолистое тело и срединные структуры" },
   { "period": "targeted", "type": "view", "name": "Кора: борозды и извилины по срокам" },
-  { "period": "basic", "type": "anomaly", "name": "Вентрикуломегалия" },
-  { "period": "basic", "type": "anomaly", "name": "Агенезия мозолистого тела" },
-  { "period": "basic", "type": "anomaly", "name": "Порок Денди–Уокера, киста кармана Блейка, гипоплазия червя" },
-  { "period": "basic", "type": "anomaly", "name": "Цефалоцеле" },
   { "period": "targeted", "type": "anomaly", "name": "Нарушения развития коры" },
   { "period": "targeted", "type": "anomaly", "name": "Микроцефалия" }
 ];

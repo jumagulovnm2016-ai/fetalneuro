@@ -33,7 +33,8 @@ test("поиск находит по синонимам и аббревиату�
   assert.equal(first("intracranial translucency"), "t1-midsag");
   assert.equal(first("голопрозэнцефалия"), "hpe");
   assert.equal(first("crash sign"), "osb");
-  assert.equal(first("Денди-Уокер"), "pf-cystic");
+  assert.ok(FN.search.query(idx, "Денди-Уокер").some(r => r.id === "pf-cystic"));
+  assert.ok(FN.search.query(idx, "вентрикуломегалия").some(r => r.id === "vm"));
   assert.ok(FN.search.query(idx, "нет бабочки").some(r => r.id === "no-butterfly"));
   assert.equal(FN.search.query(idx, "позвоночник").some(r => r.id === "t1-spine"), true);
   assert.equal(FN.search.query(idx, "четвёртый желудочек").some(r => r.id === "t1-midsag"), true);

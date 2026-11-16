@@ -175,6 +175,20 @@ var FN = globalThis.FN = globalThis.FN || {};
       caption: "Antenatal ultrasound of the fetus in the second pregnancy at around 21 weeks 2 days gestation, showing a sagittal view of the spine (ceph: cephalic side, caud: caudal side) with normal anatomy; the cervical (white arrow), thoracic (red arrow), and lumbar (yellow arrow) segments are seen with normal curvature.",
       captionRu: "Сагиттальный срез позвоночника в 21 нед 2 дня, нормальная анатомия: шейный (белая стрелка), грудной (красная) и поясничный (жёлтая) отделы с нормальным изгибом. Ceph — головной конец, Caud — каудальный. У этого плода были вентрикуломегалия, гипоплазия мозжечка и артрогрипоз; позвоночник авторы описывают как нормальный.",
       source: TAM
+    },
+    {
+      id: "tamhankar2025-f7", file: "img/tamhankar2025-f7.jpg", cards: ["anom:vm"], status: "draft",
+      label: "Тяжёлая вентрикуломегалия, 21 нед",
+      caption: "Antenatal ultrasound of the fetus shows a transverse view of the fetal skull (ant: anterior side, post: posterior side) around 21 weeks 2 days gestation, with dilated cerebral ventricles (blue arrows) (measuring 16.63 mm and 23.75 mm in diameter) showing a dangling choroid plexus (red arrows); the falx cerebri is normal (white arrow).",
+      captionRu: "Поперечный срез головы в 21 нед 2 дня: расширенные боковые желудочки (синие стрелки; 16,63 и 23,75 мм), «свисающие» сосудистые сплетения (красные стрелки), серп мозга нормальный (белая стрелка).",
+      source: Object.assign({}, TAM, { figure: "рис. 7" })
+    },
+    {
+      id: "tamhankar2025-f8", file: "img/tamhankar2025-f8.jpg", cards: ["anom:pf-2tri", "anom:vm"], status: "draft",
+      label: "Гипоплазия мозжечка и вентрикуломегалия, 21 нед",
+      caption: "...a transverse view of the fetal skull at the level of the posterior fossa ... around 21 weeks 2 days gestation, showing dilated cerebral ventricles (blue arrows), cerebellar hypoplasia (yellow arrow), the trans-cerebellar diameter was 17.59 mm (6 percentile, z score is minus 1.59), cisterna magna was normal (green arrow), and falx cerebri was normal (white arrow).",
+      captionRu: "Поперечный срез на уровне задней черепной ямки в 21 нед 2 дня: расширенные желудочки (синие стрелки), гипоплазия мозжечка (жёлтая стрелка; поперечный размер 17,59 мм — 6-й перцентиль), большая цистерна нормальная (зелёная стрелка), серп нормальный (белая стрелка).",
+      source: Object.assign({}, TAM, { figure: "рис. 8" })
     }
   ];
 })();

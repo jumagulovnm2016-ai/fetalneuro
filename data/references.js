@@ -98,5 +98,36 @@ FN.REFS = {
     authors: "Xue X, Tu P, Zhang X, Ran S, Zhang X",
     journal: "Front Med (Lausanne)", year: 2025, volume: "12", pages: "1637954",
     doi: "10.3389/fmed.2025.1637954", pmid: "41267861", url: "https://doi.org/10.3389/fmed.2025.1637954"
+  },
+  "smfm-2018-vm": {
+    organization: "Society for Maternal-Fetal Medicine (SMFM)",
+    title: "Mild fetal ventriculomegaly: diagnosis, evaluation, and management",
+    authors: "Fox NS, Monteagudo A, Kuller JA, Craigo S, Norton ME",
+    journal: "Am J Obstet Gynecol", year: 2018, volume: "219", issue: "1", pages: "B2–B9",
+    doi: "10.1016/j.ajog.2018.04.039", pmid: "29705191", url: "https://doi.org/10.1016/j.ajog.2018.04.039"
+  },
+  "pagani-2014-vm": {
+    title: "Neurodevelopmental outcome in isolated mild fetal ventriculomegaly: systematic review and meta-analysis",
+    authors: "Pagani G, Thilaganathan B, Prefumo F",
+    journal: "Ultrasound Obstet Gynecol", year: 2014, volume: "44", issue: "3", pages: "254–260",
+    doi: "10.1002/uog.13364", pmid: "24623452", url: "https://doi.org/10.1002/uog.13364"
+  },
+  "santo-2012-acc": {
+    title: "Counseling in fetal medicine: agenesis of the corpus callosum",
+    authors: "Santo S, D'Antonio F, Homfray T, et al.",
+    journal: "Ultrasound Obstet Gynecol", year: 2012, volume: "40", issue: "5", pages: "513–521",
+    doi: "10.1002/uog.12315", pmid: "23024003", url: "https://doi.org/10.1002/uog.12315"
+  },
+  "dantonio-2016-pf1": {
+    title: "Systematic review and meta-analysis of isolated posterior fossa malformations on prenatal ultrasound imaging (part 1): nomenclature, diagnostic accuracy and associated anomalies",
+    authors: "D'Antonio F, Khalil A, Garel C, et al.",
+    journal: "Ultrasound Obstet Gynecol", year: 2016, volume: "47", issue: "6", pages: "690–697",
+    doi: "10.1002/uog.14900", pmid: "25970099", url: "https://doi.org/10.1002/uog.14900"
+  },
+  "parisi-2025-pf": {
+    title: "Outcome of apparently isolated fetal posterior fossa anomalies: systematic review and meta-analysis",
+    authors: "Parisi N, Rizzo G, Cecchini F, et al.",
+    journal: "Ultrasound Obstet Gynecol", year: 2025, volume: "66", issue: "5", pages: "571–581",
+    doi: "10.1002/uog.29309", pmid: "40785453", url: "https://doi.org/10.1002/uog.29309"
   }
 };
