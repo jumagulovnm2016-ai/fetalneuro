@@ -129,5 +129,23 @@ FN.REFS = {
     authors: "Parisi N, Rizzo G, Cecchini F, et al.",
     journal: "Ultrasound Obstet Gynecol", year: 2025, volume: "66", issue: "5", pages: "571–581",
     doi: "10.1002/uog.29309", pmid: "40785453", url: "https://doi.org/10.1002/uog.29309"
+  },
+  "toi-2004-sulci": {
+    title: "How early are fetal cerebral sulci visible at prenatal ultrasound and what is the normal pattern of early fetal sulcal development?",
+    authors: "Toi A, Lister WS, Fong KW",
+    journal: "Ultrasound Obstet Gynecol", year: 2004, volume: "24", issue: "7", pages: "706–715",
+    doi: "10.1002/uog.1802", pmid: "15586358", url: "https://doi.org/10.1002/uog.1802"
+  },
+  "chaithanya-2022-sulci": {
+    title: "Role of Ultrasonography in the Evaluation of Normal Developmental Pattern of Fetal Cerebral Sulci Between 18 and 32 Weeks of Gestational Age",
+    authors: "Chaithanya A, Sakalecha AK, Srinivasa BCR",
+    journal: "Cureus", year: 2022, volume: "14", issue: "2", pages: "e22581",
+    doi: "10.7759/cureus.22581", pmid: "35355543", url: "https://doi.org/10.7759/cureus.22581"
+  },
+  "mappa-2024-cortex": {
+    title: "Sonographic Cortical Development and Anomalies in the Fetus: A Systematic Review and Meta-Analysis",
+    authors: "Mappa I, Di Mascio D, Carbone L, et al.",
+    journal: "Biomedicines", year: 2024, volume: "12", issue: "7", pages: "1397",
+    doi: "10.3390/biomedicines12071397", pmid: "39061971", url: "https://doi.org/10.3390/biomedicines12071397"
   }
 };

@@ -79,6 +79,14 @@ var FN = globalThis.FN = globalThis.FN || {};
     license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
     changes: "из каждой пары снимков оставлен вариант со стрелкой (без измерений); буквы панелей и стрелки — авторов"
   };
+  const CHA = fig => ({
+    authors: "Chaithanya A, Sakalecha AK, Srinivasa BCR",
+    title: "Role of Ultrasonography in the Evaluation of Normal Developmental Pattern of Fetal Cerebral Sulci Between 18 and 32 Weeks of Gestational Age",
+    journal: "Cureus", year: 2022, figure: fig,
+    doi: "10.7759/cureus.22581", url: "https://doi.org/10.7759/cureus.22581",
+    license: "CC BY", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    changes: "без изменений"
+  });
   FN.IMAGES = [
     {
       id: "ungureanu2023-f1a", file: "img/ungureanu2023-f1a.jpg", cards: ["view:t1-axial"], status: "draft",
@@ -226,6 +234,41 @@ var FN = globalThis.FN = globalThis.FN || {};
       caption: "(B) Parasagittal view demonstrating the normal appearance of the GE (arrow) anterior and inferior to the choroid plexus within the caudothalamic groove.",
       captionRu: "Парасагиттальный срез: нормальный вид ганглионарного бугорка (стрелка) кпереди и книзу от сосудистого сплетения, в каудоталамической борозде.",
       source: BER
+    },
+    {
+      id: "chaithanya2022-f1", file: "img/chaithanya2022-f1.jpg", cards: ["view:tg-cortex"], status: "draft",
+      label: "Теменно-затылочная борозда: 18, 20 и 26 нед",
+      caption: "(A) Fetus of 18 weeks 1 day gestational age demonstrating POF in the form of a dot pattern (long white arrow). (B) Fetus of 20 weeks 2 days gestational age demonstrating POF in the form of V-shaped indentation (long white arrow). (C) Fetus of 26 weeks 5 days gestational age demonstrating POF in the form of Y-shaped configuration (long white arrow).",
+      captionRu: "Аксиальные срезы, теменно-затылочная борозда (стрелка): (A) 18 нед 1 день — точка; (B) 20 нед 2 дня — V-образная вырезка; (C) 26 нед 5 дней — Y-образная борозда.",
+      source: CHA("рис. 1")
+    },
+    {
+      id: "chaithanya2022-f2", file: "img/chaithanya2022-f2.jpg", cards: ["view:tg-cortex"], status: "draft",
+      label: "Шпорная борозда: 19, 21 и 26 нед",
+      caption: "(A) Fetus of 19 weeks 3 days gestational age demonstrating CF in the form of a dot pattern (long white arrow). (B) Fetus of 21 weeks 2 days gestational age demonstrating CF in the form of a V-shaped indentation (long white arrow). (C) Fetus of 25 weeks 6 days gestational age demonstrating CF in the form of a Y-shaped configuration (long white arrow).",
+      captionRu: "Корональные срезы, шпорная борозда (стрелка): (A) 19 нед 3 дня — точка; (B) 21 нед 2 дня — V-образная вырезка; (C) 25 нед 6 дней — Y-образная борозда.",
+      source: CHA("рис. 2")
+    },
+    {
+      id: "chaithanya2022-f3", file: "img/chaithanya2022-f3.jpg", cards: ["view:tg-cortex"], status: "draft",
+      label: "Поясная борозда: 23, 25 и 28 нед",
+      caption: "Two-dimensional ultrasound grey-scale images (coronal sections) where cavum septum pellucidum (star) was seen, demonstrating various patterns of CS at different gestational ages. (A) Fetus of 23 weeks 1 day gestational age demonstrating CS in the form of a dot pattern (long white arrow). (B) Fetus of 25 weeks 3 days gestational age demonstrating CS in the form of a V-shaped indentation (long white arrow). (C) Fetus of 28 weeks gestational age demonstrating CS in the form of a Y-shaped configuration (long white arrow).",
+      captionRu: "Корональные срезы на уровне полости прозрачной перегородки (звёздочка), поясная борозда (стрелка): (A) 23 нед 1 день — точка; (B) 25 нед 3 дня — V-образная вырезка; (C) 28 нед — Y-образная борозда.",
+      source: CHA("рис. 3")
+    },
+    {
+      id: "chaithanya2022-f4", file: "img/chaithanya2022-f4.jpg", cards: ["view:tg-cortex"], status: "draft",
+      label: "Сильвиева борозда: оперкуляризация, 19–26 нед",
+      caption: "(A) Fetus of 19 weeks 4 days gestational age demonstrating SF in the form of a smooth pattern (long white arrow). (B) Fetus of 22 weeks gestational age demonstrating an obtuse angle (> 90°) between SF and the adjacent temporal lobe (long white arrow). (C) Fetus of 25 weeks 6 days gestational age demonstrating an acute angle (< 90°) between Sylvian fissure and the adjacent temporal lobe (long white arrow).",
+      captionRu: "Аксиальные срезы, сильвиева борозда (стрелка): (A) 19 нед 4 дня — гладкий контур; (B) 22 нед — тупой угол (> 90°) с височной долей; (C) 25 нед 6 дней — острый угол (< 90°).",
+      source: CHA("рис. 4")
+    },
+    {
+      id: "chaithanya2022-f5", file: "img/chaithanya2022-f5.jpg", cards: ["view:tg-cortex"], status: "draft",
+      label: "Борозды выпуклой поверхности: 21 и 28 нед",
+      caption: "(A) Fetus of 21 weeks 3 days gestational age showing a smooth lateral brain surface without any sulcal indentations (long white arrow). (B) Fetus of 28 weeks 5 days gestational age demonstrating multiple indentations on the lateral brain surface (white arrowheads) suggestive of convexity sulci.",
+      captionRu: "Аксиальные срезы: (A) 21 нед 3 дня — гладкая латеральная поверхность мозга без борозд (стрелка); (B) 28 нед 5 дней — множественные вырезки на латеральной поверхности (наконечники стрелок), это борозды выпуклой поверхности.",
+      source: CHA("рис. 5")
     }
   ];
 })();
