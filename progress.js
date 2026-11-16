@@ -2,8 +2,8 @@
 var FN = globalThis.FN = globalThis.FN || {};
 (function () {
   const APP = "fetalneuro", FORMAT = 1;
-  const KEY_RE = /^[va]_([a-z0-9-]+)$/;
-  const validKeys = D => new Set([...(D.VIEWS || []).map(x => "v_" + x.id), ...(D.ANOMALIES || []).map(x => "a_" + x.id)]);
+  const KEY_RE = /^[vaf]_([a-z0-9-]+)$/;
+  const validKeys = D => new Set([...(D.VIEWS || []).map(x => "v_" + x.id), ...(D.ANOMALIES || []).map(x => "a_" + x.id), ...(D.ALGOS || []).map(x => "f_" + x.id)]);
 
   function build(state, now = new Date()) {
     return { app: APP, format: FORMAT, exportedAt: now.toISOString(),

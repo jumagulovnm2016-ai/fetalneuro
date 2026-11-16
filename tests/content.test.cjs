@@ -13,7 +13,7 @@ test("у каждого источника есть PMID и DOI", () => {
 });
 
 test("пока нет экспертной проверки — всё черновик", () => {
-  for (const v of [...FN.VIEWS, ...FN.ANOMALIES]) assert.notEqual(v.status, "approved", v.id);
+  for (const v of [...FN.VIEWS, ...FN.ANOMALIES, ...FN.ALGOS]) assert.notEqual(v.status, "approved", v.id);
 });
 
 test("если у среза есть изображение, номера на нём совпадают с легендой", () => {
@@ -34,6 +34,7 @@ test("поиск находит по синонимам и аббревиату�
   assert.equal(first("голопрозэнцефалия"), "hpe");
   assert.equal(first("crash sign"), "osb");
   assert.equal(first("Денди-Уокер"), "pf-cystic");
+  assert.ok(FN.search.query(idx, "нет бабочки").some(r => r.id === "no-butterfly"));
   assert.equal(FN.search.query(idx, "позвоночник").some(r => r.id === "t1-spine"), true);
   assert.equal(FN.search.query(idx, "четвёртый желудочек").some(r => r.id === "t1-midsag"), true);
 });

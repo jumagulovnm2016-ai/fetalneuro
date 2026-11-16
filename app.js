@@ -1,6 +1,6 @@
 (() => {
   const { META, PERIODS, PLAN, VIEWS, QUIZ, REFS } = FN;
-  const ANOMALIES = FN.ANOMALIES || [];
+  const ANOMALIES = FN.ANOMALIES || [], ALGOS = FN.ALGOS || [];
   const check = FN.validate ? FN.validate(FN) : { errors: [] };
   if (check.errors.length) console.error("FetalNeuro: ошибки контента", check.errors);
   const $app = document.getElementById("app");
@@ -22,6 +22,7 @@
     moon: '<svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>',
     auto: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17" /><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/></svg>',
     brain: '<svg viewBox="0 0 24 24"><path d="M12 5.5c-1-1.6-3.6-2-5-.6-1.3.2-2.4 1.5-2.2 3-1.4.8-1.8 2.8-.8 4-.9 1.4-.3 3.4 1.3 3.9.3 1.8 2.2 2.9 3.9 2.2.9 1 2 1 2.8.5zM12 5.5c1-1.6 3.6-2 5-.6 1.3.2 2.4 1.5 2.2 3 1.4.8 1.8 2.8.8 4 .9 1.4.3 3.4-1.3 3.9-.3 1.8-2.2 2.9-3.9 2.2-.9 1-2 1-2.8.5zM12 5.5v13"/></svg>',
+    algo: '<svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2.2"/><circle cx="5" cy="18" r="2.2"/><circle cx="19" cy="12" r="2.2"/><path d="M7.2 6H11v12H7.2M11 12h5.8"/></svg>',
     plan: '<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>',
     quiz: '<svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>'
   };
@@ -72,7 +73,7 @@
     const items = Object.entries(groups).map(([id, rs]) => {
       const s = REFS[id]; if (!s) return "";
       const badges = rs.map(r => `<span class="badge wrap ${r.verified ? "ok" : "draft"}">${r.verified ? `сверено с резюме: «${SEC_RU[r.section] || r.section}»` : "источник по теме, утверждения не сверены"}</span>`).join(" ");
-      return `<li><b>${esc(s.organization || s.authors)}</b>. ${esc(s.title)}. <i>${esc(s.journal || "")}</i> ${s.year}${s.volume ? `;${esc(s.volume)}` : ""}${s.pages ? `:${esc(s.pages)}` : ""}.
+      return `<li><b>${esc((s.organization || s.authors).replace(/\.$/, ""))}</b>. ${esc(s.title)}. <i>${esc(s.journal || "")}</i> ${s.year}${s.volume ? `;${esc(s.volume)}` : ""}${s.pages ? `:${esc(s.pages)}` : ""}.
         <a href="${esc(s.url)}" target="_blank" rel="noopener">doi:${esc(s.doi)}</a>${s.pmid ? ` · PMID ${esc(s.pmid)}` : ""}<br>${badges}</li>`;
     }).join("");
     return `<h2 id="s-refs">Источники</h2><ol class="refs">${items}</ol>`;
@@ -91,7 +92,7 @@
 
   /* ---------- страницы ---------- */
   function home() {
-    const total = VIEWS.length + ANOMALIES.length, done = Object.keys(studied()).length;
+    const total = VIEWS.length + ANOMALIES.length + ALGOS.length, done = Object.keys(studied()).length;
     const best = store.get("quizBest", null);
     const feat = (href, icon, cls, title, sub) => `<a class="card feature" href="${href}"><span class="tile ${cls}">${icon}</span>
       <span><h3>${title}</h3><span class="small muted">${sub}</span></span></a>`;
@@ -109,6 +110,7 @@
     </section>
     <div class="grid two">
       ${feat("#/views", I.brain, "", "Срезы 11–14 недель", `${t1.length} среза: схема с легендой, техника, норма, измерения, ошибки, находки.`)}
+      ${feat("#/algos", I.algo, "", "От находки к диагнозу", `${ALGOS.length} алгоритма: что проверить по порядку и какой дифференциальный ряд.`)}
       ${feat("#/anoms", I.brain, "red", "Пороки 11–14 недель", `${ANOMALIES.length} карточки: признаки, срезы, дифдиагноз, ловушки, тактика.`)}
       ${feat("#/plan", I.plan, "", "План разделов", `II–III триместр и прицельная нейросонография: ${PLAN.length} тем в разработке.`)}
       ${feat("#/quiz", I.quiz, "red", "Проверка знаний", `${QUIZ.length} вопросов с разбором ответов.`)}
@@ -154,6 +156,7 @@
       ${v.measure ? `<h2>Измерения</h2><ul>${v.measure.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       <h2>Типичные ошибки</h2><ul class="err">${v.errors.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
       <h2>Патологические находки</h2><ul>${v.abnormal.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      ${(() => { const al = ALGOS.filter(a => a.view === id); return al.length ? `<h2>Алгоритмы для этого среза</h2>${al.map(a => item(`#/algo/${a.id}`, I.algo, a.title, esc(a.finding), "f_" + a.id)).join("")}` : ""; })()}
       ${(() => { const an = ANOMALIES.filter(a => a.views[id]); return an.length ? `<h2>Пороки, видимые на этом срезе</h2>${an.map(a => item(`#/anom/${a.id}`, esc(a.abbr), a.name, esc(a.views[id]), "a_" + a.id, "red")).join("")}` : ""; })()}
       ${refsBlock(v.references)}
       <div class="row" style="margin-top:18px">${doneBtn("v_" + id)}</div>
@@ -180,6 +183,27 @@
           <span class="orig">Подпись авторов: «${esc(im.caption)}»</span>
           <span class="cred">${credit(im.source)}</span></figcaption></figure>`).join("")}</div>
       ${list.some(im => im.status !== "approved") ? `<p class="small muted">${statusBadge("draft")} Подбор снимков к срезу и перевод подписей — черновик, ждут проверки автором. Снимки не подтверждают текст карточки: источники утверждений — в разделе «Источники».</p>` : ""}`;
+  }
+
+  /* ---------- алгоритмы ---------- */
+  function algosList() {
+    return `<h1>От находки к диагнозу</h1>
+      <p class="subtitle">Врач у аппарата видит не «голопрозэнцефалию», а «нет бабочки». Здесь путь начинается с находки: что проверить по порядку и к какому дифференциальному ряду она ведёт.</p>
+      ${VIEWS.map(v => { const list = ALGOS.filter(a => a.view === v.id); return list.length ? `<h2>${esc(v.name)}</h2>${list.map(a => item(`#/algo/${a.id}`, I.algo, a.title, esc(a.finding), "f_" + a.id)).join("")}` : ""; }).join("")}
+      ${foot()}`;
+  }
+  function algoPage(id) {
+    const a = byId(ALGOS, id); if (!a) return notFound();
+    const v = byId(VIEWS, a.view);
+    return `<div class="crumb"><a href="#/algos">Находки</a> / <a href="#/view/${v.id}">${esc(v.abbr)}</a></div>
+      <h1>${esc(a.title)}</h1><div>${statusBadge(a.status)}</div>
+      <div class="note info" style="margin-top:12px"><b>Находка.</b> ${esc(a.finding)}</div>
+      <h2>Что проверить по порядку</h2><ol class="steps">${a.steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol>
+      <h2>Дифференциальный ряд</h2><div class="ddx">${a.ddx.map(d => { const inner = `<b>${esc(d.name)}</b><span class="small muted">${esc(d.key)}</span>`;
+        return d.id && byId(ANOMALIES, d.id) ? `<a class="card" href="#/anom/${d.id}">${inner}</a>` : `<div class="card">${inner}</div>`; }).join("")}</div>
+      ${a.note ? `<div class="note">${esc(a.note)}</div>` : ""}
+      ${refsBlock(a.references)}
+      <div class="row" style="margin-top:18px">${doneBtn("f_" + id)}</div>${foot()}`;
   }
 
   /* ---------- пороки ---------- */
@@ -213,6 +237,7 @@
       <h2 id="s-pitfalls">Ловушки</h2><ul class="err">${a.pitfalls.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
       <h2>Прогноз</h2><p>${esc(a.prognosis)}</p>
       <h2 id="s-refer">Тактика</h2><p>${esc(a.refer)}</p>
+      ${(() => { const al = ALGOS.filter(x => x.ddx.some(d => d.id === id)); return al.length ? `<h2>Алгоритмы, ведущие к этому пороку</h2>${al.map(x => item(`#/algo/${x.id}`, I.algo, x.title, esc(x.finding), "f_" + x.id)).join("")}` : ""; })()}
       ${refsBlock(a.references)}
       <div class="row" style="margin-top:18px">${doneBtn("a_" + id)}</div>
       <div class="pager">
@@ -285,8 +310,11 @@
     if (!q.trim()) return `<h1>Поиск</h1><p class="muted">Введите запрос: срез, структуру, признак (IT, BSOB, «бабочка», spina bifida).</p>`;
     searchIndex = searchIndex || FN.search.buildIndex(FN);
     const res = FN.search.query(searchIndex, q);
-    const rows = res.map(r => { const an = r.type === "anom", x = byId(an ? ANOMALIES : VIEWS, r.id);
-      return item(r.href, esc(x.abbr), r.title, r.snippet ? `<span class="badge view">${esc(r.snippet.label)}</span> ${hl(r.snippet)}` : an ? "порок" : "срез", (an ? "a_" : "v_") + r.id, an ? "red" : ""); });
+    const rows = res.map(r => {
+      const sub = r.snippet ? `<span class="badge view">${esc(r.snippet.label)}</span> ${hl(r.snippet)}` : ({ anom: "порок", algo: "находка", view: "срез" })[r.type];
+      if (r.type === "algo") return item(r.href, I.algo, r.title, sub, "f_" + r.id);
+      const an = r.type === "anom", x = byId(an ? ANOMALIES : VIEWS, r.id);
+      return item(r.href, esc(x.abbr), r.title, sub, (an ? "a_" : "v_") + r.id, an ? "red" : ""); });
     return `<h1>Поиск</h1><p class="subtitle">«${esc(q)}» — найдено: ${res.length}</p>${rows.length ? rows.join("") : '<p class="muted">Ничего не найдено. Попробуйте сокращение (IT, BS, BSOB), английский термин или признак («бабочка»).</p>'}`;
   }
 
@@ -304,6 +332,8 @@
       case "view": html = viewPage(id); nav = "views"; break;
       case "plan": html = planPage(); break;
       case "anoms": html = anomList(); break;
+      case "algos": html = algosList(); break;
+      case "algo": html = algoPage(id); nav = "algos"; break;
       case "anom": html = anomPage(id); nav = "anoms"; break;
       case "quiz": html = quizPage(); break;
       case "search": html = searchPage(decodeURIComponent((qs || "").replace(/^q=/, ""))); nav = ""; break;

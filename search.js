@@ -17,7 +17,7 @@ var FN = globalThis.FN = globalThis.FN || {};
   const tokens = q => normalize(q).split(" ").filter(Boolean).map(stem);
 
   const LABELS = { how: "Как получить", check: "Норма", measure: "Измерения", errors: "Ошибки", abnormal: "Патология", structures: "Структуры",
-    def: "Суть", keys: "Признаки", views: "По срезам", ddx: "Дифдиагноз", assoc: "Сочетания", pitfalls: "Ловушки", prognosis: "Прогноз", refer: "Тактика" };
+    def: "Суть", keys: "Признаки", finding: "Находка", steps: "Что проверить", note: "Примечание", views: "По срезам", ddx: "Дифдиагноз", assoc: "Сочетания", pitfalls: "Ловушки", prognosis: "Прогноз", refer: "Тактика" };
 
   function doc(type, id, href, title, nameList, fields) {
     const names = nameList.filter(Boolean).map(n => " " + normalize(n) + " ");
@@ -29,7 +29,9 @@ var FN = globalThis.FN = globalThis.FN || {};
     const anoms = (D.ANOMALIES || []).map(a => doc("anom", a.id, `#/anom/${a.id}`, a.name, [a.abbr, a.name, a.en, ...(a.aliases || [])],
       { def: [a.def], keys: a.keys, views: Object.values(a.views || {}), ddx: (a.ddx || []).map(d => `${d.name} — ${d.key}`),
         assoc: [a.assoc], pitfalls: a.pitfalls, prognosis: [a.prognosis], refer: [a.refer] }));
-    return anoms.concat((D.VIEWS || []).map(v => {
+    const algos = (D.ALGOS || []).map(a => doc("algo", a.id, `#/algo/${a.id}`, a.title, [a.title],
+      { finding: [a.finding], steps: a.steps, ddx: a.ddx.map(d => `${d.name} — ${d.key}`), note: [a.note] }));
+    return anoms.concat(algos, (D.VIEWS || []).map(v => {
       const names = [v.abbr, v.name, ...(v.aliases || [])].map(n => " " + normalize(n) + " ");
       const parts = [];
       const fields = { how: v.how, check: v.check, measure: v.measure, errors: v.errors, abnormal: v.abnormal,

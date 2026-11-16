@@ -81,6 +81,21 @@ var FN = globalThis.FN = globalThis.FN || {};
       if (!((k === "view" && views.has(id)) || (k === "anom" && anoms.has(id)))) err(`IMAGES ${im.id}`, `привязка ${c}`);
     }));
 
+    const algos = new Set();
+    (D.ALGOS || []).forEach((a, i) => {
+      const w = `ALGOS[${i}] ${a.id}`;
+      if (!SLUG.test(a.id || "")) err(w, "id не slug");
+      if (algos.has(a.id)) err(w, "повтор id");
+      algos.add(a.id);
+      if (!views.has(a.view)) err(w, `view → ${a.view}`);
+      ["title", "finding"].forEach(f => str(a[f]) || err(w, `нет ${f}`));
+      if (!strs(a.steps)) err(w, "steps");
+      if (!Array.isArray(a.ddx) || !a.ddx.length) err(w, "нет ddx");
+      else a.ddx.forEach((d, k) => { if (!str(d.name) || !str(d.key)) err(w, `ddx[${k}]`); if (d.id && !anoms.has(d.id)) err(w, `ddx → ${d.id}`); });
+      review(w, a);
+      (a.references || []).forEach((r, k) => { if (!D.REFS || !D.REFS[r.source]) err(w, `references[${k}]: нет источника ${r.source}`); });
+    });
+
     (D.PLAN || []).forEach((p, i) => {
       if (!periods.has(p.period)) err(`PLAN[${i}]`, "неизвестный period");
       if (!["view", "anomaly"].includes(p.type)) err(`PLAN[${i}]`, "type");

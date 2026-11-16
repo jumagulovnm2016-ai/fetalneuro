@@ -92,5 +92,11 @@ FN.REFS = {
     authors: "Ungureanu DR, Drăgușin RC, Căpitănescu RG, et al.",
     journal: "Brain Sci", year: 2023, volume: "13", issue: "1", pages: "118",
     doi: "10.3390/brainsci13010118", pmid: "36672099", url: "https://doi.org/10.3390/brainsci13010118"
+  },
+  "xue-2025-cp": {
+    title: "First-trimester choroid plexus-to-head ratio: a novel sonographic marker for the early detection of fetal central nervous system malformations",
+    authors: "Xue X, Tu P, Zhang X, Ran S, Zhang X",
+    journal: "Front Med (Lausanne)", year: 2025, volume: "12", pages: "1637954",
+    doi: "10.3389/fmed.2025.1637954", pmid: "41267861", url: "https://doi.org/10.3389/fmed.2025.1637954"
   }
 };
