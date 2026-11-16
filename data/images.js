@@ -39,6 +39,14 @@ var FN = globalThis.FN = globalThis.FN || {};
     changes: "оставлен нижний ряд (эхограммы D–F), схемы A–C убраны"
   };
   const UNG_CASE = fig => Object.assign({}, UNG, { figure: fig, changes: "оставлены только эхограммы; фотографии после прерывания беременности убраны; подписи и буквы — авторов" });
+  const CAST = {
+    authors: "Castellanos Gutierrez AS, Schmitz R, Hammer K, et al.",
+    title: "Central nervous system biometry in fetuses with and without congenital heart diseases",
+    journal: "Arch Gynecol Obstet", year: 2022, figure: "рис. 1",
+    doi: "10.1007/s00404-022-06484-6", url: "https://doi.org/10.1007/s00404-022-06484-6",
+    license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    changes: "без изменений"
+  };
   FN.IMAGES = [
     {
       id: "ungureanu2023-f1a", file: "img/ungureanu2023-f1a.jpg", cards: ["view:t1-axial"], status: "draft",
@@ -123,6 +131,13 @@ var FN = globalThis.FN = globalThis.FN || {};
       caption: "Illustration and two-dimensional view of the standard axial butterfly plane in fetus with nervous system abnormalities. (A,D) Fetus with ventriculomegaly (VM). (B,E) Fetus with open spina bifida (OSB). (C,F) Fetus with microcephaly. ▲, the lateral ventricles; ✽, the choroid plexus.",
       captionRu: "Стандартный аксиальный срез «бабочки» в I триместре при патологии: (D) вентрикуломегалия, (E) открытая spina bifida, (F) микроцефалия. ▲ — боковые желудочки, ✽ — сосудистые сплетения.",
       source: XUE
+    },
+    {
+      id: "castellanos2022-f1", file: "img/castellanos2022-f1.jpg", cards: ["view:b-transventricular"], status: "draft",
+      label: "Трансвентрикулярная плоскость, 24 нед",
+      caption: "Transventricular plane of a fetus in a normal pregnancy at the 24th week of gestation. The size of the cavum septi pellucidi (CSP: 4.3 mm) and the size of the lateral ventricle (PV: 6.7 mm) were measured",
+      captionRu: "Трансвентрикулярная плоскость, нормальная беременность, 24 нед. Измерены полость прозрачной перегородки (CSP: 4,3 мм) и ширина бокового желудочка (PV: 6,7 мм).",
+      source: CAST
     }
   ];
 })();

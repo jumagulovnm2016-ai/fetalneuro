@@ -109,7 +109,7 @@
       <div class="progress" style="margin:14px 0 0"><i style="width:${total ? Math.round(done / total * 100) : 0}%"></i></div>
     </section>
     <div class="grid two">
-      ${feat("#/views", I.brain, "", "Срезы 11–14 недель", `${t1.length} среза: схема с легендой, техника, норма, измерения, ошибки, находки.`)}
+      ${feat("#/views", I.brain, "", "Срезы", `11–14 нед: ${t1.length}; II–III триместр: ${VIEWS.filter(v => v.period === "basic").length}. Эхограммы, техника, норма, измерения, ошибки, находки.`)}
       ${feat("#/algos", I.algo, "", "От находки к диагнозу", `${ALGOS.length} алгоритма: что проверить по порядку и какой дифференциальный ряд.`)}
       ${feat("#/anoms", I.brain, "red", "Пороки 11–14 недель", `${ANOMALIES.length} карточки: признаки, срезы, дифдиагноз, ловушки, тактика.`)}
       ${feat("#/plan", I.plan, "", "План разделов", `II–III триместр и прицельная нейросонография: ${PLAN.length} тем в разработке.`)}

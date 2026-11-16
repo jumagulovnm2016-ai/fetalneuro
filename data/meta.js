@@ -18,10 +18,6 @@ FN.PERIODS = [
 /* План разделов, которые ещё не написаны. Показываются как «в разработке».
    type: view — срез, anomaly — порок. */
 FN.PLAN = [
-  { "period": "basic", "type": "view", "name": "Трансвентрикулярная плоскость" },
-  { "period": "basic", "type": "view", "name": "Трансталамическая плоскость" },
-  { "period": "basic", "type": "view", "name": "Трансцеребеллярная плоскость" },
-  { "period": "basic", "type": "view", "name": "Позвоночник во II–III триместре" },
   { "period": "targeted", "type": "view", "name": "Корональные срезы" },
   { "period": "targeted", "type": "view", "name": "Сагиттальные срезы: срединный и парасагиттальные" },
   { "period": "targeted", "type": "view", "name": "Мозолистое тело и срединные структуры" },
