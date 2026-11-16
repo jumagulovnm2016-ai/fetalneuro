@@ -149,7 +149,7 @@
       <h1>${esc(v.name)}</h1>
       <div>${statusBadge(v.status)}</div>
       <div class="scheme-wrap" style="margin-top:12px">
-        <figure class="scheme" id="schemeFig">${SCHEMES[id] ? SCHEMES[id]() : ""}<figcaption>Схема-черновик, не УЗ-изображение; пропорции условные. Нажмите на структуру в легенде — номер подсветится.</figcaption></figure>
+        <figure class="scheme" id="schemeFig">${SCHEMES[id] ? SCHEMES[id]() : ""}<figcaption>Рисунок в эхографическом стиле, не эхограмма; пропорции и яркость условные. Нажмите на структуру в легенде — номер подсветится.</figcaption></figure>
         ${legend}
       </div>
       <h2>Как получить</h2><ol class="steps">${v.how.map(x => `<li>${esc(x)}</li>`).join("")}</ol>
